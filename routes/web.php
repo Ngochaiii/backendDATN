@@ -31,7 +31,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     ], function () {
         Route::get('/', [WebController::class, 'index'])->name('home.index');
     });
-
+    
 
     Route::group(['middleware' => ['guest']], function () {
         /**
