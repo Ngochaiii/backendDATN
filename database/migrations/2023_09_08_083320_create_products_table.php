@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->unsignedInteger('product_id')->primary();
             $table->unsignedInteger('brand_id')->index();
-            $table->unsignedInteger('cate_id');
+            $table->unsignedInteger('cate_id')->index();
             $table->string('name');
             $table->string('slug');
             $table->string('pro_image')->nullable();
@@ -27,10 +27,10 @@ class CreateProductsTable extends Migration
             $table->boolean('status')->default(1);
             $table->boolean('featured')->default(0);
             $table->text('review')->nullable();
-            
+
             $table->timestamps();
         });
-        
+
     }
 
     /**

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BranchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\WebController;
 
@@ -30,8 +31,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         'middleware' => 'is_active'
     ], function () {
         Route::get('/', [WebController::class, 'index'])->name('home.index');
+        Route::group(['prefix' => 'branch'], function () {
+            Route::get('/', [BranchController::class, 'index'])->name('branch');
+            Route::post('/add', [BranchController::class, 'store'])->name('branch.add');
+        });
     });
-    
+
 
     Route::group(['middleware' => ['guest']], function () {
         /**

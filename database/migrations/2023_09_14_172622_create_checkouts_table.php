@@ -15,6 +15,10 @@ class CreateCheckoutsTable extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('order_id');
+            $table->unsignedInteger('product_id');
+            $table->integer('quantity');
+            $table->decimal('total_price', 8, 2);
             $table->timestamps();
         });
     }

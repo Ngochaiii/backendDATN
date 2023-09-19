@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BranchController extends Controller
 {
@@ -14,7 +15,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        return view('web.branch.index');
     }
 
     /**
@@ -35,7 +36,16 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $branch = new Branch();
+
+        $branch->name = $request->name;
+        $branch->slug = Str::slug($request->name ,'-');
+        $branch->logo = $request->logo;
+        $branch->save();
+
+        return redirect()->route('branch')->with('success', 'Thành công');
+
     }
 
     /**

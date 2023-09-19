@@ -15,6 +15,10 @@ class CreateTranspostsTable extends Migration
     {
         Schema::create('transposts', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('status');
+            $table->unsignedInteger('order_id');
+            $table->unsignedInteger('product_id');
+            $table->tinyInteger('type');
             $table->timestamps();
         });
     }

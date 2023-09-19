@@ -14,14 +14,11 @@ class CreateBranchesTable extends Migration
     public function up()
     {
         Schema::create('branches', function (Blueprint $table) {
-            $table->unsignedInteger('brand_id')->primary();
+            $table->unsignedInteger('brand_id')->autoIncrement();
             $table->string('name');
             $table->string('slug')->nullable();
             $table->string('logo')->nullable();
             $table->timestamps();
-        });
-        Schema::table('products', function ($table) {
-            $table->foreign('brand_id')->references('brand_id')->on('branches');
         });
     }
 
@@ -34,5 +31,6 @@ class CreateBranchesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('branches');
+
     }
 }

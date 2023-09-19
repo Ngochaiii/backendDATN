@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIsActiveColumn extends Migration
+class AddForeignKeysOnVariantTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddIsActiveColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_active')->default(0);
+        Schema::table('variants', function ($table) {
+            $table->foreign('product_id')->references('product_id')->on('products');
+
         });
     }
 
@@ -25,6 +26,8 @@ class AddIsActiveColumn extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('variants', function ($table) {
+            $table->dropForeign('variants_product_id_foreign');
+        });
     }
 }

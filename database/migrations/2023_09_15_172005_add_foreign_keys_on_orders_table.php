@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVariantsTable extends Migration
+class AddForeignKeysOnOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateVariantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('variants', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('product_id');
-            $table->string('size');
-            $table->string('color');
-            $table->timestamps();
+        Schema::table('orders', function ($table) {
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 
@@ -29,6 +26,8 @@ class CreateVariantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('variants');
+        Schema::table('orders', function ($table) {
+            $table->dropForeign('orders_user_id_foreign');
+        });
     }
 }
