@@ -33,7 +33,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/', [WebController::class, 'index'])->name('home.index');
         Route::group(['prefix' => 'branch'], function () {
             Route::get('/', [BranchController::class, 'index'])->name('branch');
+            Route::get('/list', [BranchController::class, 'show'])->name('branch.list');
             Route::post('/add', [BranchController::class, 'store'])->name('branch.add');
+            Route::get('/{slug}/edit', [BranchController::class, 'edit'])->name('branch.edit');
+            Route::post('/{slug}/edit', [BranchController::class, 'update'])->name('branch.update');
         });
     });
 

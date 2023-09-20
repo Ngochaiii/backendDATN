@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Branch extends Model
 {
+    protected $primaryKey = 'brand_id';
     /**
      * @var string
      */
-    
+
 
     /**
      * @var array

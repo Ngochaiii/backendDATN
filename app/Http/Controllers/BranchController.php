@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Branch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class BranchController extends Controller
 {
@@ -56,18 +57,20 @@ class BranchController extends Controller
      */
     public function show(Branch $branch)
     {
-        //
+        $compacts =[
+            'branches' => DB::table('branches')->paginate(15)
+        ];
+        return view('web.branch.list_branch',$compacts);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Branch  $branch
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Branch $branch)
+    public function edit(Branch $branch ,string $slug)
     {
-        //
+
+        $dataBranch = Branch::where('slug', $slug)->first();
+        $compacts = [
+            'dataBranch' => $dataBranch
+        ];
+        return view('web.branch.edit',$compacts);
     }
 
     /**
@@ -77,9 +80,26 @@ class BranchController extends Controller
      * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, Branch $branch, string $slug)
     {
-        //
+        $dataBranchUpdate = Branch::where('slug', $slug)->first();
+        if (!$dataBranchUpdate) {
+            abort(404);
+        } //end if
+
+        $accepts = [
+            'name',
+            'logo',
+        ];
+
+        foreach ($accepts as $col) {
+            if ($dataBranchUpdate->$col != $request->$col) {
+                $dataBranchUpdate->$col = $request->$col;
+            } //end if
+        } //end foreach
+
+        $dataBranchUpdate->save();
+        return redirect()->back()->with('success', 'Thành công');
     }
 
     /**
