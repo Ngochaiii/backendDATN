@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product_categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductCategoriesController extends Controller
 {
@@ -14,7 +15,10 @@ class ProductCategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $compacts = [
+            'dataCategories' => DB::table('product_categories')->paginate(15)
+        ];
+        return view('web.category.index',$compacts);
     }
 
     /**
@@ -35,7 +39,13 @@ class ProductCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $cate = new Product_categories();
+        $cate ->name = $request->name;
+        $cate->description = $request->description ;
+        $cate->save();
+
+        return redirect()->route('category')->with('success', 'Thành công');
     }
 
     /**
@@ -78,8 +88,9 @@ class ProductCategoriesController extends Controller
      * @param  \App\Models\Product_categories  $product_categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product_categories $product_categories)
+    public function destroy(Product_categories $product_categories , int $id)
     {
-        //
+        DB::table('product_categories')->where('cate_id', $id)->delete();
+        return redirect()->route('category')->with('success', 'Thành công');
     }
 }

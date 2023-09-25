@@ -18,8 +18,8 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'brand_id', 'sku', 'name', 'slug', 'description', 'quantity',
-        'weight', 'price', 'sale_price', 'status', 'featured', 'cate_id'
+        'brand_id', 'name', 'slug', 'description', 'quantity',
+        'weight', 'price', 'sale_price', 'status', 'featured', 'cate_id','pro_image'
     ];
 
     /**
@@ -31,6 +31,21 @@ class Product extends Model
         'status'    =>  'boolean',
         'featured'  =>  'boolean'
     ];
+    const STATUS_DISABLE = 0;
+    const STATUS_ENABLE = 1;
+    const STATUSES_ARR = [
+        self::STATUS_DISABLE,
+        self::STATUS_ENABLE
+    ];
+    const STATUSES = [
+        self::STATUS_ENABLE => 'Hiển thị',
+        self::STATUS_DISABLE => 'Ẩn',
+    ];
+
+    public function getStatusNameAttribute()
+    {
+        return self::STATUSES[$this->status];
+    }
 
     /**
      * @param $value
@@ -39,8 +54,13 @@ class Product extends Model
     {
         return $this->belongsTo(Product_categories::class, 'cate_id');
     }
-    public function branch() 
+    public function branch()
     {
         return $this->belongsTo(Branch::class , 'brand_id');
+    }
+
+    public function setFilenamesAttribute($value)
+    {
+        $this->attributes['pro_image'] = json_encode($value);
     }
 }

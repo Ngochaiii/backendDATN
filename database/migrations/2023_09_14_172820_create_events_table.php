@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->integer('date')->default(0)->index();
             $table->integer('time')->default(0)->index();
+            $table->tinyInteger('day_of_week')->unsigned()->default(0)->index();
             $table->integer('type')->default(0)->index();
             $table->integer('duration')->default(0);
             $table->integer('expired_at')->default(0)->index();

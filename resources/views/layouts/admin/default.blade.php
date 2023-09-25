@@ -14,7 +14,7 @@
         data-sidebar-position="fixed" data-header-position="fixed">
         <div class="container-fluid">
             @yield('content')
-                   
+
         </div>
     </div>
     @include('layouts.web.default.footer_js')

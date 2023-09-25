@@ -18,7 +18,8 @@
                             <div class="col-md-3 col-sm-3">
                                 <a href="{{ route('branch.edit', $item->slug) }}"
                                     class="btn btn-primary pull-right">Update</a>
-                                <a class="btn btn-danger pull-right">Delete</a>
+                                <a href="{{ route('branch.delete', $item->slug) }}"
+                                 class="btn btn-danger pull-right">Delete</a>
                             </div>
 
                         </div>

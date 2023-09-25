@@ -52,20 +52,61 @@
                         <span class="hide-menu">Card</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-file-description"></i>
-                        </span>
-                        <span class="hide-menu">Forms</span>
-                    </a>
-                </li>
+
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                         <span>
                             <i class="ti ti-typography"></i>
                         </span>
                         <span class="hide-menu">Typography</span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Danh mục sản phẩm  </span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('category')}}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-file-description"></i>
+                        </span>
+                        <span class="hide-menu">Quản lý danh mục sản phẩm </span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Quản lý sản phẩm   </span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('product')}}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-typography"></i>
+                        </span>
+                        <span class="hide-menu">Tạo sản phẩm</span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Quản lý sự kiện  </span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('events')}}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-cards"></i>
+                        </span>
+                        <span class="hide-menu">Sự kiện</span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Quản lý tickets  </span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-cards"></i>
+                        </span>
+                        <span class="hide-menu">Tickets</span>
                     </a>
                 </li>
                 <li class="nav-small-cap">

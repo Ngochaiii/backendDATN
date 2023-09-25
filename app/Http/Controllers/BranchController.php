@@ -108,8 +108,9 @@ class BranchController extends Controller
      * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Branch $branch)
+    public function destroy(Branch $branch, string $slug)
     {
-        //
+        DB::table('branches')->where('slug', $slug)->delete();
+        return redirect()->route('branch.list')->with('success', 'Thành công');
     }
 }
