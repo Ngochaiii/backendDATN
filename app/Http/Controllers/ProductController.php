@@ -44,31 +44,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $this->validate($request, [
 
             'pro_image' => 'required',
 
-            'pro_image.*' => 'mimes:doc,pdf,docx,zip'
+            'pro_image.*' => 'mimes:png,jpg'
 
         ]);
-
+        $data = [];
+        $files =$request->pro_image;
+        if ($request->hasfile('pro_image')) {
+            foreach ($request->file('pro_image') as $index => $file) {
+                $name = time() . '.' . $file->extension();
+                $file->move(public_path() . '/files/', $name);
+                $data[$index] = $name;
+            }
+        }
 
         $products = new Product();
         $products->brand_id = $request->brand_id;
-        dd(1);
+
         $products->cate_id = $request->cate_id;
         $products->name = $request->name;
         $products->slug = Str::slug($request->name, '-');
-        if ($request->hasfile('pro_image')) {
-            foreach ($request->file('pro_image') as $file) {
-                $name = time() . '.' . $file->extension();
-
-                $file->move(public_path() . '/files/', $name);
-
-                $data[] = $name;
-            }
-        }
         $products->pro_image = json_encode($data);
         $products->description = $request->description;
         $products->quantity = $request->quantity;

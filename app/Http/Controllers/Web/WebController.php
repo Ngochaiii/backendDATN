@@ -11,4 +11,12 @@ class WebController extends Controller
     {
         return view('web.index');
     }
+    public function error()
+    {
+        return view('web.error');
+    }
+    public function comming()
+    {
+        return view('web.commingsoon');
+    }
 }

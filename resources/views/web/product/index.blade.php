@@ -3,8 +3,8 @@
 @section('content')
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
-            <form action="{{route('product.add')}}" method="POST">
-                @csrf
+            <form action="{{ route('product.add') }}" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="formbold-mb-3">
                     <label for="age" class="formbold-form-label"> Tên sản phẩm </label>
                     <input type="text" name="name" id="age" placeholder="ex:25" class="formbold-form-input" />
@@ -46,20 +46,19 @@
 
                 <div class="formbold-mb-3">
                     <label for="status" class="formbold-form-label"> status </label>
-                    <input type="text" name="status" id="email" placeholder=" "
-                        class="formbold-form-input" />
+                    <input type="text" name="status" id="email" placeholder=" " class="formbold-form-input" />
                 </div>
 
                 <div class="formbold-mb-3">
                     <label for="Featured" class="formbold-form-label"> Featured </label>
 
-                    <input type="text" name="featured"  placeholder="Featured"
+                    <input type="text" name="featured" placeholder="Featured"
                         class="formbold-form-input formbold-mb-3" />
                 </div>
                 <div class="formbold-mb-3">
                     <label for="description" class="formbold-form-label"> Mô tả </label>
 
-                    <input type="text" name="description"  placeholder="Thêm mô tả"
+                    <input type="text" name="description" placeholder="Thêm mô tả"
                         class="formbold-form-input formbold-mb-3" />
                 </div>
 
@@ -70,7 +69,8 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="file" name="pro_image[]" id="images" placeholder="Choose images" multiple>
+                                <input type="file" name="pro_image[]" accept="image/png, image/gif, image/jpeg" id="images" placeholder="Choose images"
+                                    multiple>
                             </div>
                             @error('images')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>

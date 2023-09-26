@@ -8,6 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProductCategoriesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Web\HomepageController;
+use App\Http\Controllers\Web\ProductController as WebProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\WebController;
 
@@ -24,6 +25,8 @@ use App\Http\Controllers\Web\WebController;
 */
 
 Route::get('/', [WebController::class, 'index'])->name('web.index');
+Route::get('/error', [WebController::class, 'error'])->name('web.error');
+Route::get('/commingsoon', [WebController::class, 'comming'])->name('web.commingsoon');
 
 Route::get('/', [LoginController::class, 'show'])->name('web.show');
 Route::post('/', [LoginController::class, 'login'])->name('web.login');
@@ -63,7 +66,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::group(['prefix' => 'home-page'], function () {
             Route::get('/', [HomepageController::class, 'index'])->name('home');
 
+
+            Route::group(['prefix' => 'product'], function () {
+                Route::get('/', [WebProductController::class, 'index'])->name('home.product');
+                Route::get('/detail', [WebProductController::class, 'edit'])->name('home.product.detail');
+            });
+
         });
+
     });
 
 

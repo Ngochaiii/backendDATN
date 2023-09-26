@@ -14,7 +14,7 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->unsignedInteger('product_id')->primary();
+            $table->unsignedInteger('product_id')->autoIncrement();
             $table->unsignedInteger('brand_id')->index();
             $table->unsignedInteger('cate_id')->index();
             $table->string('name');
