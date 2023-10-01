@@ -6,10 +6,53 @@ use App\Models\Branch;
 use App\Models\Product;
 use App\Models\Product_categories;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    public static function getFilters(array $request = [])
+    {
+        $accepts = [
+            'name','brand_id','cate_id','quantity','price','description'
+        ];
+        $filters = [];
+
+        foreach ($accepts as $col) {
+            $filters[$col] = Arr::get($request, $col);
+        } //end foreach
+
+        return $filters;
+    }
+    private static function getProduct(array $filters = [], $limit = 10)
+    {
+        extract($filters);
+        $data = Product::query();
+        if (!is_null($name)) {
+            $data->where('name', 'LIKE',  "%" . $name . "%");
+        }//end if
+        if (!is_null($description)) {
+            $data->where('description', 'LIKE',  "%" . $description . "%");
+        } //end if
+        if (!is_null($brand_id)) {
+            $data->where('brand_id', $brand_id);
+        } //end if
+        if (!is_null($cate_id)) {
+            $data->where('cate_id', $cate_id);
+        } //end if
+        if (!is_null($quantity)) {
+            $data->where('quantity','<=', $quantity);
+        } //end if
+        if (!is_null($price)) {
+            $data->where('price','<=', $price);
+        } //end if
+        return $data->orderBy('product_id', 'desc')->paginate($limit);
+    }
+    private static function findProduct(int $id)
+    {
+        return Product::find($id);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -86,9 +129,19 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request)
     {
-        //
+        $filters = self::getFilters($request->toArray());
+        $brands = Branch::all();
+        $categories = Product_categories::all();
+        $compacts = [
+            "products" => self::getProduct($filters),
+            "filters" => $filters,
+            "brands" =>$brands,
+            "categories" => $categories
+        ];
+
+        return view('web.product.list',$compacts);
     }
 
     /**
@@ -97,9 +150,20 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $product,int $id)
     {
-        //
+        $product = self::findProduct($id);
+        if (!$product) {
+            abort(404);
+        } //end if
+        $brands = Branch::all();
+        $categories = Product_categories::all();
+        $compacts = [
+            "brands" =>$brands,
+            "categories" => $categories,
+            'product' => $product
+        ];
+        return view('web.product.detail',$compacts);
     }
 
     /**
@@ -120,8 +184,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product, int $id)
     {
-        //
+        DB::table('products')->where('product_id', $id)->delete();
+        return redirect()->route('product.list')->with('success', 'Thành công');
     }
 }

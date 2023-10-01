@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCategoriesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Web\HomepageController;
@@ -54,6 +55,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         });
         Route::group(['prefix' => 'product'], function () {
             Route::get('/', [ProductController::class, 'index'])->name('product');
+            Route::get('/list', [ProductController::class, 'show'])->name('product.list');
+            Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+            Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+            Route::post('/{id}/edit', [ProductController::class, 'update'])->name('product.update');
             Route::post('/add', [ProductController::class, 'store'])->name('product.add');
         });
         Route::group(['prefix' => 'event'], function () {
@@ -62,6 +67,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::post('/create', [EventController::class, 'store'])->name('events.store');
             Route::get('/{id}/edit', [EventController::class, 'edit'])->name('events.edit');
             Route::post('/{id}/edit', [EventController::class, 'update'])->name('events.update');
+        });
+        Route::group(['prefix' => 'order'], function () {
+            Route::get('/', [OrderController::class, 'index'])->name('order');
+
         });
         Route::group(['prefix' => 'home-page'], function () {
             Route::get('/', [HomepageController::class, 'index'])->name('home');
