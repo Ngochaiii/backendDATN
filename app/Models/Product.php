@@ -63,4 +63,12 @@ class Product extends Model
     {
         $this->attributes['pro_image'] = json_encode($value);
     }
+    public function checkouts()
+    {
+        return $this->hasMany(Checkouts::class);
+    }
+    public function transposts()
+    {
+        return $this->hasMany(Transposts::class);
+    }
 }

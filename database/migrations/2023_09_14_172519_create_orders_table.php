@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->integer('quantity');
             $table->tinyInteger('ship_method');
             $table->tinyInteger('pay_method');
+            $table->text('bill_image')->nullable();
             $table->enum('status', ['pending', 'processing', 'completed', 'decline'])->default('pending');
             $table->timestamps();
         });

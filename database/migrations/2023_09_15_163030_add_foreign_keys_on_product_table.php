@@ -14,8 +14,8 @@ class AddForeignKeysOnProductTable extends Migration
     public function up()
     {
         Schema::table('products', function ($table) {
-            $table->foreign('cate_id')->references('cate_id')->on('product_categories');
-            $table->foreign('brand_id')->references('brand_id')->on('branches');
+            $table->foreign('cate_id')->references('cate_id')->on('product_categories')->onDelete('cascade');
+            $table->foreign('brand_id')->references('brand_id')->on('branches')->onDelete('cascade');
         });
     }
 

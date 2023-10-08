@@ -1,71 +1,101 @@
 @extends('layouts.web.default')
 
 @section('content')
-    <div class="right_col" role="main">
-        <div class="">
-            <div class="page-title">
-                <div class="title_left">
-                    <h3>@lang('admin.orders.order_manage')</h3>
-                </div>
-            </div>
+    <div class="card ">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Orders List
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Người đặt</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Địa chỉ cụ thể</th>
+                            <th>Quantity</th>
+                            <th>Phương thức ship</th>
+                            <th>Phương thức thanh toán</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-            <div class="clearfix"></div>
+                        @foreach ($orders as $row)
+                            <tr>
+                                <td>{{ $row->order_id }}</td>
+                                <td>{{ $row->user->name ?? '' }}</td>
+                                <td>{{ $row->name }}</td>
+                                <td>{{ $row->specific_address }}</td>
+                                <td>{{ $row->quantity }}</td>
+                                <td>{{ $row->ship_methodName }}</td>
+                                <td>{{ $row->pay_methodName }}</td>
+                                <td>{{ $row->status }}</td>
+                                <td>
+                                    @if ($row->status == 'pending')
+                                        <a href="{{ route('order.show', $row->order_id) }}" class="btn btn-sm btn-info">Tạo
+                                            Hóa Đơn</a>
+                                    @elseif($row->status == 'decline')
+                                        <a href="#" class="btn btn-sm btn-danger">Đơn hàng đã bị hủy </a>
+                                    @else
+                                        <a href="#" class="btn btn-sm btn-success">Đã có đơn hàng </a>
+                                    @endif
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12 ">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>@lang('admin.orders.order_view')</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="card-box table-responsive">
+                                </td>
+                            </tr>
+                        @endforeach
 
-                                        <table id="datatable" class="table table-striped table-bordered" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>@lang('admin.orders.id')</th>
-                                                    <th>@lang('admin.orders.order_name')</th>
-                                                    <th>@lang('admin.orders.order_phone')</th>
-                                                    <th>@lang('admin.orders.quantity')</th>
-                                                    <th>@lang('admin.orders.total_price')</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($orders as $order)
-                                                    <tr @if ($order->order_status == 0) class="bg-warning" @endif>
-                                                        <td>{{ $order->order_id }}</td>
-                                                        <td>{{ $order->order_name }}</td>
-                                                        <td>{{ $order->order_phone }}</td>
-                                                        <td>{{ $order->order_qty }}</td>
-                                                        <td>{{ $order->order_total }}</td>
-                                                        <td class="text-center"><a
-                                                                href="{{ route('admin.order.show', $order->order_id) }}"
-                                                                @if ($order->order_status != 0) class="btn btn-outline-light btn-xs">  @else class="btn btn-outline-light btn-xs"> @endif
-                                                                <i class="fa fa-eye text-dark"></i></a></td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </tbody>
+
+                </table>
             </div>
         </div>
     </div>
 @endsection
+@push('footer_js')
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+        crossorigin="anonymous" />
+
+    <script>
+        $('#dataTable').DataTable({
+            columnDefs: [{
+                bSortable: false,
+                targets: [6]
+            }],
+            dom: 'lBfrtip',
+            buttons: [{
+                    extend: 'copyHtml5',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        },
+                        columns: [0, ':visible']
+
+                    }
+                },
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        },
+                        columns: [0, ':visible']
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        },
+                        columns: [0, 1, 2, 5]
+                    }
+                },
+                'colvis'
+            ]
+        });
+    </script>
+@endpush

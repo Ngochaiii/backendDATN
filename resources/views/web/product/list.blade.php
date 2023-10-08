@@ -45,8 +45,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="card-body">
-                {{-- {!! $events->links() !!} --}}
+            <div class="card-body" >
+                {!! $products->links() !!}
             </div>
         </div>
     </div>

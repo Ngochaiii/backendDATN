@@ -14,7 +14,7 @@ class AddForeignKeysOnVariantTable extends Migration
     public function up()
     {
         Schema::table('variants', function ($table) {
-            $table->foreign('product_id')->references('product_id')->on('products');
+            $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
 
         });
     }

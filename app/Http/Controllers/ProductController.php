@@ -15,7 +15,7 @@ class ProductController extends Controller
     public static function getFilters(array $request = [])
     {
         $accepts = [
-            'name','brand_id','cate_id','quantity','price','description'
+            'name', 'brand_id', 'cate_id', 'quantity', 'price', 'description'
         ];
         $filters = [];
 
@@ -31,7 +31,7 @@ class ProductController extends Controller
         $data = Product::query();
         if (!is_null($name)) {
             $data->where('name', 'LIKE',  "%" . $name . "%");
-        }//end if
+        } //end if
         if (!is_null($description)) {
             $data->where('description', 'LIKE',  "%" . $description . "%");
         } //end if
@@ -42,10 +42,10 @@ class ProductController extends Controller
             $data->where('cate_id', $cate_id);
         } //end if
         if (!is_null($quantity)) {
-            $data->where('quantity','<=', $quantity);
+            $data->where('quantity', '<=', $quantity);
         } //end if
         if (!is_null($price)) {
-            $data->where('price','<=', $price);
+            $data->where('price', '<=', $price);
         } //end if
         return $data->orderBy('product_id', 'desc')->paginate($limit);
     }
@@ -96,7 +96,7 @@ class ProductController extends Controller
 
         ]);
         $data = [];
-        $files =$request->pro_image;
+        $files = $request->pro_image;
         if ($request->hasfile('pro_image')) {
             foreach ($request->file('pro_image') as $index => $file) {
                 $name = time() . '.' . $file->extension();
@@ -137,11 +137,11 @@ class ProductController extends Controller
         $compacts = [
             "products" => self::getProduct($filters),
             "filters" => $filters,
-            "brands" =>$brands,
+            "brands" => $brands,
             "categories" => $categories
         ];
 
-        return view('web.product.list',$compacts);
+        return view('web.product.list', $compacts);
     }
 
     /**
@@ -150,7 +150,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product,int $id)
+    public function edit(Product $product, int $id)
     {
         $product = self::findProduct($id);
         if (!$product) {
@@ -159,11 +159,11 @@ class ProductController extends Controller
         $brands = Branch::all();
         $categories = Product_categories::all();
         $compacts = [
-            "brands" =>$brands,
+            "brands" => $brands,
             "categories" => $categories,
-            'product' => $product
+            'products' => $product
         ];
-        return view('web.product.detail',$compacts);
+        return view('web.product.detail', $compacts);
     }
 
     /**

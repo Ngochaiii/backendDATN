@@ -8,6 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductCategoriesController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransportController;
 use App\Http\Controllers\Web\HomepageController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use Illuminate\Support\Facades\Route;
@@ -70,7 +71,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         });
         Route::group(['prefix' => 'order'], function () {
             Route::get('/', [OrderController::class, 'index'])->name('order');
-
+            Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
+        });
+        Route::group(['prefix' => 'transpost'], function () {
+            Route::post('/add', [TransportController::class, 'index'])->name('transpost.add');
+            Route::get('/show', [TransportController::class, 'show'])->name('transposts');
+            Route::get('/infor-shipper/{id}', [TransportController::class, 'call'])->name('transposts.call');
+            Route::get('/show/{id}', [TransportController::class, 'destroy'])->name('transposts.delete');
+            Route::get('/done/{id}', [TransportController::class, 'access'])->name('transposts.call_shipper');
+            // Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
         });
         Route::group(['prefix' => 'home-page'], function () {
             Route::get('/', [HomepageController::class, 'index'])->name('home');

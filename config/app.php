@@ -12,6 +12,27 @@ return [
     | any other location as required by the application or its packages.
     |
     */
+    'user_role' => 0,
+    'admin_role' => 1,
+    'sale_status' => [
+        1 => 'sale',
+        0 => 'not_sale',
+    ],
+    'ship_method' => [
+        1 => 'ship1',
+        2 => 'ship2',
+    ],
+    'pay_method' => [
+        1 => 'pay1',
+        2 => 'pay2',
+    ],
+    'order_status' => [
+        0 => 'wait',
+        1 => 'shippingNotPay',
+        2 => 'shippingPaid',
+        3 => 'complete',
+        4 => 'cancelled',
+    ],
 
     'name' => env('APP_NAME', 'Laravel'),
 

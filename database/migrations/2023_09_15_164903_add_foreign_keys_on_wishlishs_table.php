@@ -14,8 +14,8 @@ class AddForeignKeysOnWishlishsTable extends Migration
     public function up()
     {
         Schema::table('wishlists', function ($table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('product_id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
         });
     }
 

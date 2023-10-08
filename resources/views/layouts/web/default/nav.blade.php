@@ -95,6 +95,30 @@
                 </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Order </span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('order')}}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-article"></i>
+                        </span>
+                        <span class="hide-menu">Quản lý order </span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Vận Chuyển </span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('transposts')}}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-cards"></i>
+                        </span>
+                        <span class="hide-menu">Quản lý vận chuyển </span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Quản lý sự kiện  </span>
                 </li>
                 <li class="sidebar-item">
