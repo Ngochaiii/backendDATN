@@ -13,7 +13,7 @@ use App\Http\Controllers\Web\HomepageController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\WebController;
-
+use App\Http\Controllers\WishlistsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +57,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::group(['prefix' => 'product'], function () {
             Route::get('/', [ProductController::class, 'index'])->name('product');
             Route::get('/list', [ProductController::class, 'show'])->name('product.list');
+            Route::get('/show_wishlist/{id}', [WishlistsController::class, 'show_wishlist'])->name('show_wishlist');
             Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
             Route::get('/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
             Route::post('/{id}/edit', [ProductController::class, 'update'])->name('product.update');

@@ -71,4 +71,8 @@ class Product extends Model
     {
         return $this->hasMany(Transposts::class);
     }
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlists::class, 'product_id');
+    }
 }

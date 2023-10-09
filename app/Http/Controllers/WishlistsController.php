@@ -2,75 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Wishlists;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WishlistsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function save_wishlist(Request $request)
     {
-        //
+        Wishlists::create([
+            'user_id' => Auth::user()->user_id,
+            'product_id' => $request->input('product_id'),
+        ]);
+
+        return redirect()->back();
+    }
+    public function show_wishlist($id)
+    {
+        $wish = User::findOrFail($id);
+        // $wish = Wishlist::with('product')
+        //   ->where('user_id', $user->id)
+        //   ->orderby('id', 'desc')
+        //   ->paginate(10);
+        $compacts = [
+            "wishlishs" => $wish,
+        ];
+
+        return view('web.product.wishlists', $compacts);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function delete_wishlist($id)
     {
-        //
+        $wish = Wishlists::findOrFail($id);
+        $wish->delete();
+
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Wishlists  $wishlists
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Wishlists $wishlists)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Wishlists  $wishlists
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Wishlists $wishlists)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Wishlists  $wishlists
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Wishlists $wishlists)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

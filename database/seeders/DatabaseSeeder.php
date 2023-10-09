@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Wishlists;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -96,6 +97,12 @@ class DatabaseSeeder extends Seeder
                 'product_id' => $i,
                 'quantity' => $i,
                 'total_price' => 10000 * $i,
+            ]);
+        }
+        for($i = 1; $i <= 10; $i++){
+            DB::table('wishlists')->insert([
+                'user_id' => 1,
+                'product_id' => $i,
             ]);
         }
     }
