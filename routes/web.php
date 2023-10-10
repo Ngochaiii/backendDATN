@@ -82,6 +82,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/done/{id}', [TransportController::class, 'access'])->name('transposts.call_shipper');
             // Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
         });
+    });
+
+    Route::group([
+        'prefix' => '',
+        'middleware' => 'user'
+    ], function () {
         Route::group(['prefix' => 'home-page'], function () {
             Route::get('/', [HomepageController::class, 'index'])->name('home');
 
@@ -90,16 +96,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 Route::get('/', [WebProductController::class, 'index'])->name('home.product');
                 Route::get('/detail', [WebProductController::class, 'edit'])->name('home.product.detail');
             });
-
         });
-
     });
-
-
     Route::group(['middleware' => ['guest']], function () {
         /**
          * Register Routes
          */
+
         Route::get('/register', [RegisterController::class, 'show'])->name('register.show');
         Route::post('/register', [RegisterController::class, 'register'])->name('register.perform');
 

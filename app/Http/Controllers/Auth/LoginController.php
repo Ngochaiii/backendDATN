@@ -33,14 +33,23 @@ class LoginController extends Controller
 
     /**
      * Handle response after user authenticated
-     * 
+     *
      * @param Request $request
      * @param Auth $user
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     protected function authenticated(Request $request, $user)
     {
-        return redirect()->intended();
+
+        $role = $user['role'];
+        // dd($user,$role);
+        if ($role == 1) {
+
+
+            return redirect('/');
+        }else {
+            return redirect('/home-page');
+        }
     }
 }

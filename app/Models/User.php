@@ -23,8 +23,15 @@ class User extends Authenticatable
         'username',
         'password',
         'is_active',
-    ];
+        'role'
 
+    ];
+    public function isAdmin(): bool
+    {
+        return in_array($this->role, [
+            1,
+        ]);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -33,6 +40,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'is_supper_admin',
     ];
 
     /**
@@ -50,5 +58,31 @@ class User extends Authenticatable
     public function wishlist()
     {
         return $this->hasMany(Wishlists::class, 'id');
+    }
+    const ROLE_ADMIN = 1;
+    const ROLE_USER = 0;
+    const ROLES = [
+        self::ROLE_ADMIN => 'Quản trị',
+        self::ROLE_USER => 'Người dùng',
+    ];
+
+    public function getRoleNameAttribute()
+    {
+        return self::ROLES[$this->role] ?? '#';
+    }
+
+    public function getIsEmployeeAttribute()
+    {
+        return self::ROLE_USER == $this->role;
+    }
+
+    public function getIsAdminAttribute()
+    {
+        return self::ROLE_ADMIN == $this->role;
+    }
+
+    public function getIsSuperAdminAttribute()
+    {
+        return $this->is_supper_admin;
     }
 }

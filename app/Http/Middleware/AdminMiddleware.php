@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class IsActive
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,10 +16,11 @@ class IsActive
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
+        if (auth()->user()->role == 0) {
             return $next($request);
-        } //end if
+        }//end if
 
-        return redirect()->route('login.perform')->with('error', 'Sai thông tin đăng nhập');
+        return abort(404);
+        return $next($request);
     }
 }
