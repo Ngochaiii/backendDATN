@@ -2,10 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Admin;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 
-class AdminMiddleware
+class CheckRoleAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,11 +18,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role == 0) {
+        if(auth('web')->user()->role == User::ROLE_ADMIN) {
             return $next($request);
         }//end if
 
         return abort(404);
-        return $next($request);
     }
 }

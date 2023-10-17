@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         @include('layouts.front_end.default.header_css')
         @stack('css')
-        <title>StartP - IT Startup & Digital Business Services HTML Template</title>
+        <title>{{ $siteTitle ?? 'Eunoia' }}</title>
 </head>
 <body>
     <div class="content">

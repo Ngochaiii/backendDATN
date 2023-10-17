@@ -19,7 +19,7 @@ class Product extends Model
      */
     protected $fillable = [
         'brand_id', 'name', 'slug', 'description', 'quantity',
- 'price', 'sale_price', 'status', 'featured', 'cate_id','pro_image'
+        'price', 'sale_price', 'status', 'featured', 'cate_id', 'pro_image'
     ];
 
     /**
@@ -56,7 +56,7 @@ class Product extends Model
     }
     public function branch()
     {
-        return $this->belongsTo(Branch::class , 'brand_id');
+        return $this->belongsTo(Branch::class, 'brand_id');
     }
 
     public function setFilenamesAttribute($value)

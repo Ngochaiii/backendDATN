@@ -4,10 +4,10 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget">
                     <div class="logo black-logo">
-                        <a href="index.html"><img src="{{ asset('assets/front_end/assets/img/logo.png')}}" alt="logo"></a>
+                        <a href="index.html"><img src="{{asset('assets/front_end/assets/img/logo.png')}}" alt="logo"></a>
                     </div>
                     <div class="logo white-logo">
-                        <a href="index.html"><img src="{{ asset('assets/front_end/assets/img/white-logo.png')}}" alt="logo"></a>
+                        <a href="index.html"><img src="{{asset('assets/front_end/assets/img/white-logo.png')}}" alt="logo"></a>
                     </div>
                     <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
                         facilisis.</p>
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <img src="assets/img/map.png" class="map" alt="map">
-    <div class="shape1"><img src="assets/img/shape1.png" alt="shape"></div>
-    <div class="shape8 rotateme"><img src="assets/img/shape2.svg" alt="shape"></div>
+    <img src="{{asset('assets/front_end/assets/img/map.png')}}" class="map" alt="map">
+    <div class="shape1"><img src="{{asset('assets/front_end/assets/img/shape1.png')}}" alt="shape"></div>
+    <div class="shape8 rotateme"><img src="{{asset('assets/front_end/assets/img/shape2.svg')}}" alt="shape"></div>
 </footer>

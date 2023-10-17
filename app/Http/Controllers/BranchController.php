@@ -37,12 +37,15 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        $file = $request->file('logo');
+        // dd($file);
+        $fileName = uniqid() . '_' . $file->getClientOriginalName();
+        $file->move('file/brands', $fileName);
         $branch = new Branch();
 
         $branch->name = $request->name;
         $branch->slug = Str::slug($request->name ,'-');
-        $branch->logo = $request->logo;
+        $branch->logo = $fileName;
         $branch->save();
 
         return redirect()->route('branch')->with('success', 'Thành công');
@@ -58,7 +61,8 @@ class BranchController extends Controller
     public function show(Branch $branch)
     {
         $compacts =[
-            'branches' => DB::table('branches')->paginate(15)
+            'branches' => DB::table('branches')->paginate(15),
+            'siteTitle' => 'Danh sách thương hiệu '
         ];
         return view('web.branch.list_branch',$compacts);
     }
@@ -86,20 +90,15 @@ class BranchController extends Controller
         if (!$dataBranchUpdate) {
             abort(404);
         } //end if
+        $file = $request->file('logo');
+        $fileName = uniqid() . '_' . $file->getClientOriginalName();
+        $file->move('file/brands', $fileName);
 
-        $accepts = [
-            'name',
-            'logo',
-        ];
-
-        foreach ($accepts as $col) {
-            if ($dataBranchUpdate->$col != $request->$col) {
-                $dataBranchUpdate->$col = $request->$col;
-            } //end if
-        } //end foreach
-
+        $dataBranchUpdate->name = $request->name;
+        $dataBranchUpdate->slug = Str::slug($request->name ,'-');
+        $dataBranchUpdate->logo = $fileName;
         $dataBranchUpdate->save();
-        return redirect()->back()->with('success', 'Thành công');
+        return redirect()->route('branch.list')->with('success', 'Thành công');
     }
 
     /**

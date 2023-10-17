@@ -7,7 +7,7 @@
                 <h5 class="card-title fw-semibold mb-4">Them Branch </h5>
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{route('branch.add') }}" >
+                        <form  action="{{route('branch.add') }}" method="POST" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" >
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Ten Branch </label>

@@ -76,7 +76,10 @@ if (!function_exists('renderArrayOptions')) {
         return $html;
     }
 }
-
+function preHtmlData($data, $default = null)
+{
+    return $data;
+}
 function randomString($length = 4)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

@@ -85,4 +85,8 @@ class User extends Authenticatable
     {
         return $this->is_supper_admin;
     }
+    public function product()
+    {
+        return $this->belongsTo(TicketComments::class, 'id');
+    }
 }

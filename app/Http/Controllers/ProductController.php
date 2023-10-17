@@ -90,28 +90,27 @@ class ProductController extends Controller
         // dd($request->all());
         $this->validate($request, [
 
-            'pro_image' => 'required',
+            'images' => 'required',
 
-            'pro_image.*' => 'mimes:png,jpg'
+            'images.*' => 'mimes:png,jpg'
 
         ]);
-        $data = [];
-        $files = $request->pro_image;
-        if ($request->hasfile('pro_image')) {
-            foreach ($request->file('pro_image') as $index => $file) {
-                $name = time() . '.' . $file->extension();
-                $file->move(public_path() . '/files/', $name);
-                $data[$index] = $name;
+        $images = array();
+        if ($files = $request->file('images')) {
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $file->move('posts/image', $name);
+                $images[] = $name;
             }
         }
-
+        // dd($images);
         $products = new Product();
         $products->brand_id = $request->brand_id;
 
         $products->cate_id = $request->cate_id;
         $products->name = $request->name;
         $products->slug = Str::slug($request->name, '-');
-        $products->pro_image = json_encode($data);
+        $products->pro_image = json_encode($images);
         $products->description = $request->description;
         $products->quantity = $request->quantity;
         $products->price = $request->price;
@@ -120,7 +119,7 @@ class ProductController extends Controller
         $products->featured = $request->featured;
         $products->save();
 
-        return redirect()->route('product')->with('success', 'Thành công');
+        return redirect()->route('product.list')->with('success', 'Thành công');
     }
 
     /**

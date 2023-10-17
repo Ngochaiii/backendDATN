@@ -69,7 +69,7 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="file" name="pro_image[]" accept="image/png, image/gif, image/jpeg" id="images" placeholder="Choose images"
+                                <input type="file" name="images[]" accept="image/png, image/gif, image/jpeg" id="images" placeholder="Choose images"
                                     multiple>
                             </div>
                             @error('images')
@@ -79,7 +79,7 @@
 
                         <div class="col-md-6">
                             <div class="mt-1 text-center">
-                                <div class="images-preview-div"> </div>
+                                <div class="images-preview-div d-flex"> </div>
                             </div>
                         </div>
                     </div>

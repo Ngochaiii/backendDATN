@@ -19,7 +19,7 @@
                         @foreach ($dataImageProducts as $item => $image)
                             <div class="slides fade" style="background-color: burlywood">
                                 <div class="number-text">{{ $item }} / {{ count($dataImageProducts) }}</div>
-                                <img src="{{ asset('/files/' . $image) }}" style="width:100%">
+                                <img src="{{ asset('/posts/image/' . $image) }}" style="width:100%">
                             </div>
                         @endforeach
                     @else
@@ -30,10 +30,14 @@
                     @endif
                 </div>
                 <br />
-                <div class="container-dots">
+                <div class="container-dots d-flex justify-content-center">
                     @if (is_array($dataImageProducts) || is_object($dataImageProducts))
                         @foreach ($dataImageProducts as $item => $image)
-                            <span class="dot" onclick="currentSlide($item)"></span>
+                            <div class="msc-review-person d-flex">
+                                <div class="msc-review-avata">
+                                    <img src="{{ asset('/posts/image/' . $image) }}" alt="">
+                                </div>
+                            </div>
                         @endforeach
                     @else
                         <span class="dot" onclick="currentSlide(1)"></span>
@@ -90,6 +94,19 @@
 @endsection
 @push('hcss')
     <style>
+        .msc-review-avata {
+            float: left;
+            margin-right: 20px;
+            overflow: hidden;
+        }
+
+        .msc-review-avata img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+
         * {
             box-sizing: border-box;
         }
@@ -175,6 +192,10 @@
             -webkit-animation-duration: 1.5s;
             animation-name: fade;
             animation-duration: 1.5s;
+        }
+
+        .fade:not(.show) {
+            opacity: 4;
         }
 
         @-webkit-keyframes fade {

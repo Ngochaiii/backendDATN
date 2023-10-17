@@ -8,7 +8,13 @@
                     <div class="nearby-user">
                         <div class="row">
                             <div class="col-md-2 col-sm-2">
-                                <img src="{{ $item->logo }}" alt="Brand" class="profile-photo-lg">
+                                @if ($item->logo == 'logo.jpg')
+                                    <img src="{{ asset('assets/images/logos/favicon.png') }}" alt="Brand"
+                                        class="profile-photo-lg">
+                                @else
+                                    <img src="{{ asset('/file/brands/' . $item->logo) }}" alt="Brand"
+                                        class="profile-photo-lg">
+                                @endif
                             </div>
                             <div class="col-md-7 col-sm-7">
                                 <h5><a href="#" class="profile-link">{{ $item->name }}</a></h5>
@@ -19,12 +25,15 @@
                                 <a href="{{ route('branch.edit', $item->slug) }}"
                                     class="btn btn-primary pull-right">Update</a>
                                 <a href="{{ route('branch.delete', $item->slug) }}"
-                                 class="btn btn-danger pull-right">Delete</a>
+                                    class="btn btn-danger pull-right">Delete</a>
                             </div>
 
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div class="card-body" >
+                {!! $branches->links() !!}
             </div>
         </div>
     </div>
