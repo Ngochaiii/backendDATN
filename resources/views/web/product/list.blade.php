@@ -30,8 +30,8 @@
                             <tr>
                                 <td>{{$index+1}}</td>
                                 <td>{{$product->name}}</td>
-                                <td>{{$product->brand_id}}</td>
-                                <td>{{$product->cate_id}}</td>
+                                <td>{{$product->branch->name}}</td>
+                                <td>{{$product->category->name}}</td>
                                 <td>{{$product->quantity}}</td>
                                 <td>{{$product->price}}</td>
                                 <td>

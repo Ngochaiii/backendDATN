@@ -86,11 +86,10 @@
     <div class="solutions-area ptb-80">
         <div class="container">
             <div class="section-title">
-                <span class="sub-title">What We Offer</span>
+                <span class="sub-title">Những gì chúng tôi cung cấp</span>
                 <h2>Các tiện ích chúng tôi có</h2>
                 <div class="bar"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.</p>
+                <p>Duyệt các sản phẩm thịnh hành mới từ những nhà cung cấp nổi bật.</p>
             </div>
 
             <div class="row">
@@ -204,17 +203,16 @@
     <div class="funfacts-area ptb-80">
         <div class="container">
             <div class="section-title">
-                <h2>We always try to understand users expectation</h2>
+                <h2>Chúng tôi luôn cố gắng làm tốt hơn</h2>
                 <div class="bar"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.</p>
+                <p>Tham gia để khám phá các sản phẩm phổ biến.</p>
             </div>
 
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-6 col-sm-3">
                     <div class="funfact">
                         <h3><span class="odometer" data-count="180">00</span>K</h3>
-                        <p>Downloaded</p>
+                        <p>Access</p>
                     </div>
                 </div>
 
@@ -241,8 +239,8 @@
             </div>
 
             <div class="contact-cta-box">
-                <h3>Have any question about us?</h3>
-                <p>Don't hesitate to contact us</p>
+                <h3>Bạn có câu hỏi nào về chung tôi?</h3>
+                <p>Đừng ngần ngại liên hệ với chúng tôi</p>
                 <a href="contact.html" class="btn btn-primary">Contact Us</a>
             </div>
 
@@ -260,10 +258,9 @@
     <div class="ml-projects-area pt-0 ptb-80">
         <div class="container">
             <div class="section-title">
-                <h2>Proud Projects That Make Us Stand Out</h2>
+                <h2>Những sản phẩm khiến chúng tôi đáng tự hào nhất</h2>
                 <div class="bar"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.</p>
+                <p>Các sản phẩm nổi tiếng từ các nhà cung cấp hàng đầu Hàn quốc</p>
             </div>
         </div>
 
@@ -544,10 +541,9 @@
     <div class="ml-feedback-area ptb-80">
         <div class="container">
             <div class="section-title">
-                <h2>Our Clients Feedback</h2>
+                <h2>Phản hồi của khách hàng vớ<iframe src="" frameborder="0"></iframe> chúng tôi</h2>
                 <div class="bar"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.</p>
+                <p>Những đánh giá chúng tôi xin lắng nghe . Sẽ giúp ích cho chúng tôi làm tốt hơn về sau.</p>
             </div>
 
             <div class="ml-feedback-slides owl-carousel owl-theme">
@@ -621,10 +617,9 @@
     <div class="blog-area ptb-80">
         <div class="container">
             <div class="section-title">
-                <h2>Our Recent Story</h2>
+                <h2>Một số tin tưc gần đây của Thời Trang Hàn Quốc </h2>
                 <div class="bar"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua.</p>
+                <p>Đây luôn là những cập nhập mới nhất chính xác nhất.</p>
             </div>
 
             <div class="row">
@@ -708,39 +703,4 @@
         </div>
     </div>
     <!-- End Blog Area -->
-
-    <!-- Start Free Trial Area -->
-    <div class="free-trial-area">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-12">
-                    <div class="free-trial-image">
-                        <img src="{{ asset('assets/front_end/assets/img/free-trial-img.png') }}" alt="image">
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-12">
-                    <div class="free-trial-content">
-                        <h2>Start your free trial</h2>
-
-                        <form class="newsletter-form">
-                            <input type="email" class="input-newsletter" placeholder="Enter your business email here">
-                            <button type="submit">Sign Up Free</button>
-                        </form>
-
-                        <p>Test out the Machine Learning features for 14 days, no credit card required.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="shape2 rotateme"><img src="{{ asset('assets/front_end/assets/img/shape2.svg') }}" alt="shape">
-        </div>
-        <div class="shape6 rotateme"><img src="{{ asset('assets/front_end/assets/img/shape4.svg') }}" alt="shape">
-        </div>
-        <div class="shape7"><img src="{{ asset('assets/front_end/assets/img/shape4.svg') }}" alt="shape"></div>
-        <div class="shape8 rotateme"><img src="{{ asset('assets/front_end/assets/img/shape2.svg') }}" alt="shape">
-        </div>
-    </div>
-    <!-- End Free Trial Area -->
 @endsection

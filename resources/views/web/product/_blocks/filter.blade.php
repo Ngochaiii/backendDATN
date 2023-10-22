@@ -10,23 +10,23 @@
                 placeholder="Tên sản phẩm">
         </div>
         <div class="col-md-2">
-            <select class="form-control" name="cate_id">
+            <select class="form-control" name="brand_id">
+                <option value="" selected>-Nhãn hàng-</option>
                 @foreach ($brands as $brand)
-                            <option @if (isset($filters['brand_id']))
-                            selected
-                            @endif  value="{{ $brand->brand_id }}">{{ $brand->name }}
-                            </option>
-                        @endforeach
+                    <option @if (isset($filters['brand_id'])) selected @endif value="{{ $brand->brand_id }}">
+                        {{ $brand->name }}
+                    </option>
+                @endforeach
             </select>
         </div>
         <div class="col-md-2">
             <select class="form-control" name="cate_id">
+                <option value=""selected>-Danh mục-</option>
                 @foreach ($categories as $category)
-                            <option @if (isset($filters['cate_id']))
-                            selected
-                            @endif  value="{{ $category->cate_id }}">{{ $category->name }}
-                            </option>
-                        @endforeach
+                    <option @if (isset($filters['cate_id'])) selected @endif value="{{ $category->cate_id }}">
+                        {{ $category->name }}
+                    </option>
+                @endforeach
             </select>
         </div>
         <div class="col-md-2">

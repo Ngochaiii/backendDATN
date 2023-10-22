@@ -42,12 +42,25 @@ class ProductController extends Controller
             $data->where('cate_id', $cate_id);
         } //end if
         if (!is_null($quantity)) {
-            $data->where('quantity', '<=', $quantity);
+            $data->where('quantity', '>=', $quantity);
         } //end if
         if (!is_null($price)) {
-            $data->where('price', '<=', $price);
+            $data->where('price', '>=', $price);
         } //end if
-        return $data->orderBy('product_id', 'desc')->paginate($limit);
+        // $searchs = [$name,$description,$brand_id,$cate_id,$quantity,$price];
+        // foreach ($searchs as $key => $search) {
+        //     if (!is_null($search)) {
+
+        //         $data->where('name', 'LIKE',  "%" . $name . "%")
+        //             ->orWhere('description', 'LIKE',  "%" . $description . "%")
+        //             ->where('brand_id', $brand_id)
+        //             ->orWhere('cate_id', $cate_id)
+        //             ->where('quantity', '>=', $quantity)
+        //             ->orWhere('price', '>=', $price)->get();
+        //     }
+        // }
+
+        return $data->paginate($limit);
     }
     private static function findProduct(int $id)
     {
@@ -131,6 +144,7 @@ class ProductController extends Controller
     public function show(Request $request)
     {
         $filters = self::getFilters($request->toArray());
+        // dd($filters , self::getProduct($filters));
         $brands = Branch::all();
         $categories = Product_categories::all();
         $compacts = [
