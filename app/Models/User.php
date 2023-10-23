@@ -89,4 +89,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(TicketComments::class, 'id');
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
 }

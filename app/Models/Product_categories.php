@@ -18,5 +18,9 @@ class Product_categories extends Model
     {
         return $this->hasMany(Product::class, 'cate_id');
     }
+    public function post()
+    {
+        return $this->hasMany(Post::class, 'cate_id');
+    }
 
 }

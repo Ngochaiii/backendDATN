@@ -267,50 +267,50 @@
         <div class="container-fluid">
             <div class="ml-projects-slides owl-carousel owl-theme">
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('assets/front_end/assets/img/projects-img1.jpg') }}" alt="image">
+                    <img src="{{ asset('files/bst-co-tich_152908583b594923a83cc4463e2f4889_1024x1024.jpg') }}" alt="image">
 
                     <div class="plus-icon">
-                        <a href="single-project.html">
+                        <a href="#">
                             <span></span>
                         </a>
                     </div>
                 </div>
 
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('assets/front_end/assets/img/projects-img2.jpg') }}" alt="image">
+                    <img src="{{ asset('files/bst-black-swan_69df050ef6ec49309756d9056adacf0e_1024x1024.jpg') }}" alt="image">
 
                     <div class="plus-icon">
-                        <a href="single-project.html">
+                        <a href="#">
                             <span></span>
                         </a>
                     </div>
                 </div>
 
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('assets/front_end/assets/img/projects-img3.jpg') }}" alt="image">
+                    <img src="{{ asset('files/bst-tinh-linh_1a1a86c0c5f04f8791db9cb4f0455e2a_1024x1024.jpg') }}" alt="image">
 
                     <div class="plus-icon">
-                        <a href="single-project.html">
+                        <a href="#">
                             <span></span>
                         </a>
                     </div>
                 </div>
 
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('assets/front_end/assets/img/projects-img4.jpg') }}" alt="image">
+                    <img src="{{ asset('files/workshop_nha_thiet_ke_nhi_0d_2_3e18599e05984dbe838ad76585a66703_1024x1024.jpg') }}" alt="image">
 
                     <div class="plus-icon">
-                        <a href="single-project.html">
+                        <a href="#">
                             <span></span>
                         </a>
                     </div>
                 </div>
 
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('assets/front_end/assets/img/projects-img5.jpg') }}" alt="image">
+                    <img src="{{ asset('files/yyy-6663-1669364775_5bf01c798ead4f7694aa8628840cd56b_1024x1024.jpg') }}" alt="image">
 
                     <div class="plus-icon">
-                        <a href="single-project.html">
+                        <a href="#">
                             <span></span>
                         </a>
                     </div>
@@ -541,7 +541,7 @@
     <div class="ml-feedback-area ptb-80">
         <div class="container">
             <div class="section-title">
-                <h2>Phản hồi của khách hàng vớ<iframe src="" frameborder="0"></iframe> chúng tôi</h2>
+                <h2>Phản hồi của khách hàng với chúng tôi !</h2>
                 <div class="bar"></div>
                 <p>Những đánh giá chúng tôi xin lắng nghe . Sẽ giúp ích cho chúng tôi làm tốt hơn về sau.</p>
             </div>

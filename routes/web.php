@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductCategoriesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransportController;
@@ -90,7 +91,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 Route::post('/{id}', [TicketsController::class, 'comment'])->name('admin.tickets.comment');
                 Route::post('/{id}/close', [TicketsController::class, 'close'])->name('admin.tickets.close');
             });
-            // });
+            Route::group(['prefix' => 'blogs'], function () {
+                route::get('/', [PostController::class, 'index'])->name('admin.posts');
+                route::get('/create', [PostController::class, 'create'])->name('admin.posts.create');
+                route::post('/create', [PostController::class, 'store'])->name('admin.posts.store');
+                Route::get('/{key}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
+                Route::post('/{key}/edit', [PostController::class, 'update'])->name('admin.posts.update');
+                Route::post('/{key}/delete', [PostController::class, 'delete'])->name('admin.posts.delete');
+            });
         });
     });
 

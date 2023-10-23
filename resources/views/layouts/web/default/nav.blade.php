@@ -119,6 +119,18 @@
                 </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Quản lý Blogs </span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{route('admin.posts')}}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-typography"></i>
+                        </span>
+                        <span class="hide-menu">Quản lý Blogs </span>
+                    </a>
+                </li>
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Quản lý sự kiện  </span>
                 </li>
                 <li class="sidebar-item">
@@ -133,14 +145,7 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Quản lý tickets  </span>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-cards"></i>
-                        </span>
-                        <span class="hide-menu">Tickets</span>
-                    </a>
-                </li>
+
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">AUTH</span>

@@ -21,5 +21,8 @@ class Branch extends Model
     public function products() {
         return $this->hasMany(Product::class , 'brand_id');
     }
+    public function posts() {
+        return $this->hasMany(Post::class , 'brand_id');
+    }
 
 }
