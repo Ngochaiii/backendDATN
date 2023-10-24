@@ -18,7 +18,7 @@ class UserMiddleware
     public function handle(Request $request, Closure $next)
     {
         // dd(auth()->user()->role);
-        if (Auth::user()->role == 0) {
+        if (Auth::user()->role == 0 || Auth::user()->role == 1 ) {
             return $next($request);
         }//end if
 

@@ -31,8 +31,11 @@
 
             <div class="others-option">
                 <a href="cart.html" class="cart-wrapper-btn"><i data-feather="shopping-cart"></i><span>0</span></a>
-                <a href="contact.html" class="btn btn-light">Support</a>
-                <a href="login.html" class="btn btn-primary">Login</a>
+                @if (Auth::check())
+                    <a href="{{ route('logout.perform') }}" class="btn btn-light">Logout</a>
+                @else
+                    <a href="{{ route('login.perform') }}" class="btn btn-primary">Login</a>
+                @endif
             </div>
         </nav>
     </div>

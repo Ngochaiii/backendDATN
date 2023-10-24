@@ -81,6 +81,9 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $file = $request->file('image');
+        $fileName = uniqid() . '_' . $file->getClientOriginalName();
+        $file->move('file/blogs', $fileName);
         $post = new Post;
 
         $post->title = $request->title;
@@ -92,19 +95,13 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->content = $request->content;
         $post->type = (int) $request->type;
+        $post->image = $fileName;
         $post->status = (int) $request->status;
         if ($request->created_at) {
             $post->created_at = $request->created_at;
         } //end if
 
         $post->save();
-        $postId = $post->id;
-        if ($postId && $request->hasFile('image')) {
-            $reqFile = $request->file('image');
-            $fileName = storeFile($reqFile, "posts/$postId", 'post_');
-            $post->image = $fileName;
-            $post->save();
-        } //end if
 
         return redirect()->route('admin.posts')->with('success', 'Thành công');
     }

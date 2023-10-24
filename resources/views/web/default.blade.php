@@ -71,8 +71,8 @@
                                 <img src="{{ asset('assets/front_end/assets/img/partner-img/partner-hover1.png') }}"
                                     alt="image">
                             @else
-                                <img src="{{ asset('/file/brands/' . $brand->logo)  }}" alt="image">
-                                <img src="{{ asset('/file/brands/' . $brand->logo)  }}" alt="image">
+                                <img src="{{ asset('/file/brands/' . $brand->logo) }}" alt="image">
+                                <img src="{{ asset('/file/brands/' . $brand->logo) }}" alt="image">
                             @endif
                         </a>
                     </div>
@@ -267,7 +267,8 @@
         <div class="container-fluid">
             <div class="ml-projects-slides owl-carousel owl-theme">
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('files/bst-co-tich_152908583b594923a83cc4463e2f4889_1024x1024.jpg') }}" alt="image">
+                    <img src="{{ asset('files/bst-co-tich_152908583b594923a83cc4463e2f4889_1024x1024.jpg') }}"
+                        alt="image">
 
                     <div class="plus-icon">
                         <a href="#">
@@ -277,7 +278,8 @@
                 </div>
 
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('files/bst-black-swan_69df050ef6ec49309756d9056adacf0e_1024x1024.jpg') }}" alt="image">
+                    <img src="{{ asset('files/bst-black-swan_69df050ef6ec49309756d9056adacf0e_1024x1024.jpg') }}"
+                        alt="image">
 
                     <div class="plus-icon">
                         <a href="#">
@@ -287,7 +289,8 @@
                 </div>
 
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('files/bst-tinh-linh_1a1a86c0c5f04f8791db9cb4f0455e2a_1024x1024.jpg') }}" alt="image">
+                    <img src="{{ asset('files/bst-tinh-linh_1a1a86c0c5f04f8791db9cb4f0455e2a_1024x1024.jpg') }}"
+                        alt="image">
 
                     <div class="plus-icon">
                         <a href="#">
@@ -297,7 +300,8 @@
                 </div>
 
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('files/workshop_nha_thiet_ke_nhi_0d_2_3e18599e05984dbe838ad76585a66703_1024x1024.jpg') }}" alt="image">
+                    <img src="{{ asset('files/workshop_nha_thiet_ke_nhi_0d_2_3e18599e05984dbe838ad76585a66703_1024x1024.jpg') }}"
+                        alt="image">
 
                     <div class="plus-icon">
                         <a href="#">
@@ -307,7 +311,8 @@
                 </div>
 
                 <div class="single-ml-projects-box">
-                    <img src="{{ asset('files/yyy-6663-1669364775_5bf01c798ead4f7694aa8628840cd56b_1024x1024.jpg') }}" alt="image">
+                    <img src="{{ asset('files/yyy-6663-1669364775_5bf01c798ead4f7694aa8628840cd56b_1024x1024.jpg') }}"
+                        alt="image">
 
                     <div class="plus-icon">
                         <a href="#">
@@ -330,7 +335,7 @@
     </div>
     <!-- End ML Projects Area -->
 
-    <!-- Start Pricing Area -->
+    {{-- <!-- Start Pricing Area -->
     <div class="pricing-area ptb-80 pt-0">
         <div class="container">
             <div class="section-title">
@@ -535,7 +540,7 @@
         <div class="shape8 rotateme"><img src="{{ asset('assets/front_end/assets/img/shape2.svg') }}" alt="shape">
         </div>
     </div>
-    <!-- End Pricing Area -->
+    <!-- End Pricing Area --> --}}
 
     <!-- Start ML Feedback Area -->
     <div class="ml-feedback-area ptb-80">
@@ -623,71 +628,36 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-post-box">
-                        <div class="entry-thumbnail">
-                            <a href="#"><img src="{{ asset('assets/front_end/assets/img/blog-image/9.jpg') }}"
-                                    alt="image"></a>
-                        </div>
-
-                        <div class="entry-post-content">
-                            <div class="entry-meta">
-                                <ul>
-                                    <li><a href="blog-1.html">Admin</a></li>
-                                    <li>August 15, 2019</li>
-                                </ul>
+                @foreach ($posts as $item => $post)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog-post-box">
+                            <div class="entry-thumbnail">
+                                <a href="#"><img src="{{ asset('file/blogs/'.$post->image) }}"
+                                        alt="image"></a>
                             </div>
 
-                            <h3><a href="single-blog.html">Making Peace With The Feast Or Famine Of Freelancing</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</p>
-                            <a href="single-blog.html" class="learn-more-btn">Read Story <i data-feather="plus"></i></a>
-                        </div>
-                    </div>
-                </div>
+                            <div class="entry-post-content">
+                                <div class="entry-meta">
+                                    <ul>
+                                        <li><a href="">{{$post->branch->name}}</a></li>
+                                        <li>{{$post->category->name}}</li>
+                                    </ul>
+                                </div>
+                                <div class="entry-meta">
+                                    <ul>
+                                        <li>{{$post->created_at}}</li>
+                                    </ul>
+                                </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-post-box">
-                        <div class="entry-thumbnail">
-                            <a href="#"><img src="{{ asset('assets/front_end/assets/img/blog-image/10.jpg') }}"
-                                    alt="image"></a>
-                        </div>
-
-                        <div class="entry-post-content">
-                            <div class="entry-meta">
-                                <ul>
-                                    <li><a href="blog-1.html">Admin</a></li>
-                                    <li>August 18, 2019</li>
-                                </ul>
+                                <h3><a href="">{{$post->title}}</a>
+                                </h3>
+                                <p>{{$post->description}}...</p>
+                                <a href="" class="learn-more-btn">Read Story <i
+                                        data-feather="plus"></i></a>
                             </div>
-
-                            <h3><a href="single-blog.html">I Used The Web For A Day On A 50 MB Budget</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</p>
-                            <a href="single-blog.html" class="learn-more-btn">Read Story <i data-feather="plus"></i></a>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                    <div class="single-blog-post-box">
-                        <div class="entry-thumbnail">
-                            <a href="#"><img src="{{ asset('assets/front_end/assets/img/blog-image/11.jpg') }}"
-                                    alt="image"></a>
-                        </div>
-
-                        <div class="entry-post-content">
-                            <div class="entry-meta">
-                                <ul>
-                                    <li><a href="blog-1.html">Admin</a></li>
-                                    <li>August 15, 2019</li>
-                                </ul>
-                            </div>
-
-                            <h3><a href="single-blog.html">Here are the 5 most telling signs of micromanagement</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...</p>
-                            <a href="single-blog.html" class="learn-more-btn">Read Story <i data-feather="plus"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 
