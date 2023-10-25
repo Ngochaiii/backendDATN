@@ -60,7 +60,7 @@
                                             data-url="{{ route('home.product.show', $product->product_id) }}"
                                             data-bs-toggle="modal" data-bs-target="#productsModalCenter"><i
                                                 data-feather="search"></i></a></li> --}}
-                                    <li><a href="#"><i data-feather="heart"></i></a></li>
+                                    <li><a href="{{route('wishlists',$product->product_id)}}"><i data-feather="heart"></i></a></li>
 
                                 </ul>
                             </div>

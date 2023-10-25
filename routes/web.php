@@ -118,6 +118,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 Route::post('/{id}', [TicketController::class, 'comment'])->name('controlpanel.ticket.update');
                 Route::post('/{id}/close', [TicketController::class, 'close'])->name('controlpanel.ticket.close');
             });
+            Route::group(['prefix' => 'wishlists'], function () {
+                Route::get('/{id}', [WishlistsController::class, 'save_wishlist'])->name('wishlists');
+            });
         });
     });
     Route::get('/register', [RegisterController::class, 'show'])->name('register.show');

@@ -6,16 +6,20 @@ use App\Models\User;
 use App\Models\Wishlists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WishlistsController extends Controller
 {
-    public function save_wishlist(Request $request)
+    public function save_wishlist(Request $request, int $id)
     {
-        Wishlists::create([
-            'user_id' => Auth::user()->user_id,
-            'product_id' => $request->input('product_id'),
-        ]);
-
+        $dataWishlist = DB::table('wishlists')->where('product_id', $id)->first();
+        if ($dataWishlist) {
+            return redirect()->route('home.product')->with('alert', 'Sản phẩm đã có trong mục yêu thích');
+        }
+        $wishlist = new Wishlists();
+        $wishlist->user_id = Auth::user()->id;
+        $wishlist->product_id = $id;
+        $wishlist->save();
         return redirect()->back();
     }
     public function show_wishlist($id)
