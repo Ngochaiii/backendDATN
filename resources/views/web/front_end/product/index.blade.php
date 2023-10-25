@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="products-content">
-                                <h3><a href="#">{{ $product->name }}</a></h3>
+                                <h3><a href="{{route('home.product.detail',$product->product_id)}}">{{ $product->name }}</a></h3>
                                 @if (isset($product->sale_price))
                                     <span
                                         style="color: brown;font-size:15px">{{ number_format($product->sale_price, 0, '', ',') }}

@@ -11,51 +11,51 @@
             </div>
         </div>
 
-        <div class="shape1"><img src="{{asset('assets/front_end/assets/img/shape1.png')}}" alt="shape"></div>
-        <div class="shape2 rotateme"><img src="{{asset('assets/front_end/assets/img/shape2.svg')}}" alt="shape"></div>
-        <div class="shape3"><img src="{{asset('assets/front_end/assets/img/shape3.svg')}}" alt="shape"></div>
-        <div class="shape4"><img src="{{asset('assets/front_end/assets/img/shape4.svg')}}" alt="shape"></div>
-        <div class="shape5"><img src="{{asset('assets/front_end/assets/img/shape5.png')}}" alt="shape"></div>
-        <div class="shape6 rotateme"><img src="{{asset('assets/front_end/assets/img/shape4.svg')}}" alt="shape"></div>
-        <div class="shape7"><img src="{{asset('assets/front_end/assets/img/shape4.svg')}}" alt="shape"></div>
-        <div class="shape8 rotateme"><img src="{{asset('assets/front_end/assets/img/shape2.svg')}}" alt="shape"></div>
+        <div class="shape1"><img src="{{ asset('assets/front_end/assets/img/shape1.png') }}" alt="shape"></div>
+        <div class="shape2 rotateme"><img src="{{ asset('assets/front_end/assets/img/shape2.svg') }}" alt="shape"></div>
+        <div class="shape3"><img src="{{ asset('assets/front_end/assets/img/shape3.svg') }}" alt="shape"></div>
+        <div class="shape4"><img src="{{ asset('assets/front_end/assets/img/shape4.svg') }}" alt="shape"></div>
+        <div class="shape5"><img src="{{ asset('assets/front_end/assets/img/shape5.png') }}" alt="shape"></div>
+        <div class="shape6 rotateme"><img src="{{ asset('assets/front_end/assets/img/shape4.svg') }}" alt="shape"></div>
+        <div class="shape7"><img src="{{ asset('assets/front_end/assets/img/shape4.svg') }}" alt="shape"></div>
+        <div class="shape8 rotateme"><img src="{{ asset('assets/front_end/assets/img/shape2.svg') }}" alt="shape"></div>
     </div>
     <!-- End Page Title -->
+    @php
+        $dataImages = json_decode($product->pro_image);
 
+    @endphp
     <!-- Start Shop Details Area -->
     <div class="shop-details-area ptb-80">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="products-details-image products-details-image-slides owl-carousel owl-theme">
-                        <div class="single-image-box">
-                            <img src="{{asset('assets/front_end/assets/img/shop-image/1.jpg')}}" alt="img">
-                        </div>
-
-                        <div class="single-image-box">
-                            <img src="{{asset('assets/front_end/assets/img/shop-image/2.jpg')}}" alt="img">
-                        </div>
-
-                        <div class="single-image-box">
-                            <img src="{{asset('assets/front_end/assets/img/shop-image/3.jpg')}}" alt="img">
-                        </div>
-
-                        <div class="single-image-box">
-                            <img src="{{asset('assets/front_end/assets/img/shop-image/4.jpg')}}" alt="img">
-                        </div>
-
-                        <div class="single-image-box">
-                            <img src="{{asset('assets/front_end/assets/img/shop-image/5.jpg')}}" alt="img">
-                        </div>
+                        @if ($product->pro_image == 'product.jpg')
+                            <div class="single-image-box">
+                                <img src="{{ asset('assets/front_end/assets/img/shop-image/2.jpg') }}" alt="img">
+                            </div>
+                        @else
+                            @foreach ($dataImages as $item => $dataImage)
+                                <div class="single-image-box">
+                                    <img src="{{ asset('/posts/image/' . $dataImage) }}" alt="img">
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 
                 <div class="col-lg-7">
                     <div class="products-details">
-                        <h3>Wood Pencil</h3>
+                        <h3>{{ $product->name }}l</h3>
 
                         <div class="price">
-                            <span>$200.00</span> $199.00
+                            <a id="price">{{ number_format($product->price, 0, '', ',') }}</a>
+                            <a>vnđ</a> <br>
+
+                            <a>Giá Sale :</a><a id="sale-price"
+                                style="color: brown">{{ number_format($product->sale_price, 0, '', ',') }}</a>
+                            <a>vnđ </a>
                         </div>
                         <ul class="rating">
                             <li><i class="flaticon-star-1"></i></li>
@@ -65,20 +65,22 @@
                             <li><i class="flaticon-star-1"></i></li>
                         </ul>
 
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                            alteration in some form, by injected humour, or randomised words which don't look even slightly
-                            believable.</p>
-
-                        <div class="availability">
-                            Availability: <span>In Stock</span>
-                        </div>
-
+                        <p>{{ $product->description }}</p>
+                        @if ($product->quantity > 0)
+                            <div class="availability">
+                                Availability: <span>In Stock</span>
+                            </div>
+                        @else
+                            <div class="availability">
+                                Availability: <span>Out Of Stock</span>
+                            </div>
+                        @endif
                         <form>
                             <div class="quantity d-flex align-items-center">
                                 <span>Quantity:</span>
                                 <div class="input-counter">
                                     <span class="minus-btn"><i data-feather="minus"></i></span>
-                                    <input type="text" min="1" value="1">
+                                    <input type="text" min="1"  value="1">
                                     <span class="plus-btn"><i data-feather="plus"></i></span>
                                 </div>
                             </div>
@@ -95,13 +97,13 @@
                             <span>Guaranteed safe checkout:</span>
 
                             <div class="payment-methods">
-                                <img src="{{asset('assets/front_end/assets/img/payment-image/1.svg')}}" alt="image">
-                                <img src="{{asset('assets/front_end/assets/img/payment-image/2.svg')}}" alt="image">
-                                <img src="{{asset('assets/front_end/assets/img/payment-image/3.svg')}}" alt="image">
-                                <img src="{{asset('assets/front_end/assets/img/payment-image/4.svg')}}" alt="image">
-                                <img src="{{asset('assets/front_end/assets/img/payment-image/5.svg')}}" alt="image">
-                                <img src="{{asset('assets/front_end/assets/img/payment-image/6.svg')}}" alt="image">
-                                <img src="{{asset('assets/front_end/assets/img/payment-image/7.svg')}}" alt="image">
+                                <img src="{{ asset('assets/front_end/assets/img/payment-image/1.svg') }}" alt="image">
+                                <img src="{{ asset('assets/front_end/assets/img/payment-image/2.svg') }}" alt="image">
+                                <img src="{{ asset('assets/front_end/assets/img/payment-image/3.svg') }}" alt="image">
+                                <img src="{{ asset('assets/front_end/assets/img/payment-image/4.svg') }}" alt="image">
+                                <img src="{{ asset('assets/front_end/assets/img/payment-image/5.svg') }}" alt="image">
+                                <img src="{{ asset('assets/front_end/assets/img/payment-image/6.svg') }}" alt="image">
+                                <img src="{{ asset('assets/front_end/assets/img/payment-image/7.svg') }}" alt="image">
                             </div>
                         </div>
 
@@ -113,10 +115,11 @@
                                 </li>
                                 <li><a href="#" class="twitter" target="_blank"><i data-feather="twitter"></i></a>
                                 </li>
-                                <li><a href="#" class="linkedin" target="_blank"><i
-                                            data-feather="linkedin"></i></a></li>
+                                <li><a href="#" class="linkedin" target="_blank"><i data-feather="linkedin"></i></a>
+                                </li>
                                 <li><a href="#" class="instagram" target="_blank"><i
-                                            data-feather="instagram"></i></a></li>
+                                            data-feather="instagram"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -132,22 +135,18 @@
 
                         <div class="content show" id="tab_1_content">
                             <div class="products-description">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                    has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                                    printer took a galley of type and scrambled it to make a type specimen book. It has
-                                    survived not only five centuries, but also the leap into electronic typesetting,
-                                    remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing.</p>
+                                <p>{{$product->description}}</p>
                             </div>
                         </div>
 
                         <div class="content" id="tab_2_content">
                             <div class="products-description">
                                 <ul class="additional-information">
-                                    <li><span>Brand</span> ThemeForest</li>
-                                    <li><span>Color</span> Brown</li>
+                                    <li><span>Brand</span> {{$product->branch->name}}</li>
+                                    <li><span>Category</span> {{$product->category->name}}</li>
                                     <li><span>Size</span> Large, Medium</li>
-                                    <li><span>Weight</span> 27 kg</li>
-                                    <li><span>Dimensions</span> 16 x 22 x 123 cm</li>
+                                    <li><span>Cân nặng</span> 27 kg</li>
+                                    <li><span>Kích thước mẫu </span> 16 x 22 x 123 cm</li>
                                 </ul>
                             </div>
                         </div>

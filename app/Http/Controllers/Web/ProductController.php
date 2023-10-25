@@ -59,8 +59,17 @@ class ProductController extends Controller
     }
     public function edit(int $id)
     {
+        $product = self::findProduct($id);
+        // dd($product);
+        if (!$product) {
+            abort(404);
+        } //end if
+        $compacts = [
+            'siteTitle' => 'Chi tiết sản phẩm',
+            'product' =>$product,
+        ];
 
-        return view('web.front_end.product.detail');
+        return view('web.front_end.product.detail',$compacts );
     }
     public function show($id)
     {

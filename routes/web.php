@@ -108,7 +108,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::group(['prefix' => 'product'], function () {
                 Route::get('/', [WebProductController::class, 'index'])->name('home.product');
                 Route::get('/{id}', [WebProductController::class, 'show'])->name('home.product.show');
-                Route::get('/detail', [WebProductController::class, 'edit'])->name('home.product.detail');
+                Route::get('/detail/{id}', [WebProductController::class, 'edit'])->name('home.product.detail');
             });
             Route::group(['prefix' => 'ticket'], function () {
                 Route::get('/', [TicketController::class, 'index'])->name('panel.ticket');
