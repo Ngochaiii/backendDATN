@@ -18,7 +18,7 @@
                     <li class="nav-item"><a href="#" class="nav-link">Pages</a>
                     </li>
 
-                    <li class="nav-item"><a href="#" class="nav-link">Shop</a>
+                    <li class="nav-item"><a href="{{route('home.product')}}" class="nav-link">Shop</a>
 
                     </li>
 
