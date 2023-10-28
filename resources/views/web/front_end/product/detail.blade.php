@@ -50,7 +50,7 @@
                         <h3>{{ $product->name }}l</h3>
 
                         <div class="price">
-                            <a id="price">{{ number_format($product->price, 0, '', ',') }}</a>
+                            <a id="price">{{ rmat($product->price, 0, '', ',') }}</a>
                             <a>vnđ</a> <br>
 
                             <a>Giá Sale :</a><a id="sale-price"

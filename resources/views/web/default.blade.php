@@ -14,7 +14,7 @@
                             chọn lọc ý tưởng từ những câu chuyện đầy cảm xúc từ những bộ sưu tập của các nhãn hàng có mặt ở
                             hàn quốc. Mỗi bộ sưu tập là 1 câu chuyện khác nhau .</p>
 
-                        <a href="contact.html" class="btn btn-secondary">Get Started</a>
+                        <a href="{{route('contact')}}" class="btn btn-secondary">Get Started</a>
                     </div>
                 </div>
 
@@ -101,7 +101,7 @@
                         <h3><a href="#">Hàng triệu sản phẩm cho người dùng</a></h3>
                         <p>Khám phá sản phẩm và nhà cung cấp cho các bạn từ hàng triệu sản phẩm được bày bán trên website
                             của Eunoia.</p>
-                        <a href="single-services.html" class="learn-more-btn"><i data-feather="plus-circle"></i> Learn
+                        <a href="" class="learn-more-btn"><i data-feather="plus-circle"></i> Learn
                             More</a>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                         <h3><a href="#">Giao dịch và chất lượng đảm bảo</a></h3>
                         <p>Đảm bảo chất lượng sản xuất từ các nhà cung cấp đã được xác minh,
                             bảo vệ đơn hàng của bạn từ khâu thanh toán đến giao hàng..</p>
-                        <a href="single-services.html" class="learn-more-btn"><i data-feather="plus-circle"></i> Learn
+                        <a href="" class="learn-more-btn"><i data-feather="plus-circle"></i> Learn
                             More</a>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                         <h3><a href="#">Giải pháp giao dịch toàn diện</a></h3>
                         <p>Đặt hàng trơn tru từ bước tìm kiếm sản phẩm/nhà cung cấp đến quản lý, thanh toán và thực hiện đơn
                             hàng.</p>
-                        <a href="single-services.html" class="learn-more-btn"><i data-feather="plus-circle"></i> Learn
+                        <a href="" class="learn-more-btn"><i data-feather="plus-circle"></i> Learn
                             More</a>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                         <h3><a href="#">Trải nghiệm giao dịch cá nhân hóa</a></h3>
                         <p>Nhận quyền lợi chọn lọc, như hàng mẫu giảm giá và hỗ trợ chuyên biệt,
                             phù hợp với gian đoạn phát triển của doanh nghiệp bạn..</p>
-                        <a href="single-services.html" class="learn-more-btn"><i data-feather="plus-circle"></i> Learn
+                        <a href="" class="learn-more-btn"><i data-feather="plus-circle"></i> Learn
                             More</a>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
                             và bằng cách giúp người mua tìm thấy sản phẩm và nhà cung cấp một cách nhanh chóng và hiệu quả.
                         </p>
 
-                        <a href="contact.html" class="btn btn-secondary">Discover More</a>
+                        <a href="{{route('contact')}}" class="btn btn-secondary">Discover More</a>
                     </div>
                 </div>
             </div>
@@ -241,7 +241,7 @@
             <div class="contact-cta-box">
                 <h3>Bạn có câu hỏi nào về chung tôi?</h3>
                 <p>Đừng ngần ngại liên hệ với chúng tôi</p>
-                <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                <a href="{{route('contact')}}" class="btn btn-primary">Contact Us</a>
             </div>
 
             <div class="map-bg">
@@ -371,7 +371,7 @@
                                     </div>
 
                                     <div class="buy-btn">
-                                        <a href="contact.html" class="btn btn-primary">Get Started Free</a>
+                                        <a href="{{route('contact')}}" class="btn btn-primary">Get Started Free</a>
                                     </div>
 
                                     <ul class="pricing-features">
@@ -398,7 +398,7 @@
                                     </div>
 
                                     <div class="buy-btn">
-                                        <a href="contact.html" class="btn btn-primary">Start 3 Days Free Trial</a>
+                                        <a href="{{route('contact')}}" class="btn btn-primary">Start 3 Days Free Trial</a>
                                     </div>
 
                                     <ul class="pricing-features">
@@ -425,7 +425,7 @@
                                     </div>
 
                                     <div class="buy-btn">
-                                        <a href="contact.html" class="btn btn-primary">Start 6 Days Free Trial</a>
+                                        <a href="{{route('contact')}}" class="btn btn-primary">Start 6 Days Free Trial</a>
                                     </div>
 
                                     <ul class="pricing-features">
@@ -456,7 +456,7 @@
                                     </div>
 
                                     <div class="buy-btn">
-                                        <a href="contact.html" class="btn btn-primary">Get Started Free</a>
+                                        <a href="{{route('contact')}}" class="btn btn-primary">Get Started Free</a>
                                     </div>
 
                                     <ul class="pricing-features">
@@ -483,7 +483,7 @@
                                     </div>
 
                                     <div class="buy-btn">
-                                        <a href="contact.html" class="btn btn-primary">Start 3 Days Free Trial</a>
+                                        <a href="{{route('contact')}}" class="btn btn-primary">Start 3 Days Free Trial</a>
                                     </div>
 
                                     <ul class="pricing-features">
@@ -510,7 +510,7 @@
                                     </div>
 
                                     <div class="buy-btn">
-                                        <a href="contact.html" class="btn btn-primary">Start 6 Days Free Trial</a>
+                                        <a href="{{route('contact')}}" class="btn btn-primary">Start 6 Days Free Trial</a>
                                     </div>
 
                                     <ul class="pricing-features">

@@ -3,12 +3,12 @@
         <div class="container">
             <div class="startp-responsive-menu">
                 <div class="logo black-logo">
-                    <a href="index.html">
+                    <a href="{{route('home')}}">
                         <img src="{{ asset('assets/front_end/assets/img/logo.png') }}" alt="logo">
                     </a>
                 </div>
                 <div class="logo white-logo">
-                    <a href="index.html">
+                    <a href="{{route('home')}}">
                         <img src="{{ asset('assets/front_end/assets/img/white-logo.png') }}" alt="logo">
                     </a>
                 </div>
@@ -31,7 +31,7 @@
             <div class="container">
                 <div class="option-inner">
                     <div class="others-option">
-                        <a href="cart.html" class="cart-wrapper-btn"><i
+                        <a href="{{route('showCart')}}" class="cart-wrapper-btn"><i
                                 data-feather="shopping-cart"></i><span>0</span></a>
                         @if (Auth::check())
                             <a href="{{ route('logout.perform') }}" class="btn btn-light">Logout</a>

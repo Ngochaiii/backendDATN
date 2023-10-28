@@ -4,38 +4,26 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget">
                     <div class="logo black-logo">
-                        <a href="index.html"><img src="{{asset('assets/front_end/assets/img/logo.png')}}" alt="logo"></a>
+                        <a href="{{route('home')}}"><img src="{{asset('assets/front_end/assets/img/logo.png')}}" alt="logo"></a>
                     </div>
                     <div class="logo white-logo">
-                        <a href="index.html"><img src="{{asset('assets/front_end/assets/img/white-logo.png')}}" alt="logo"></a>
+                        <a href="{{route('home')}}"><img src="{{asset('assets/front_end/assets/img/white-logo.png')}}" alt="logo"></a>
                     </div>
                     <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
                         facilisis.</p>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="single-footer-widget pl-5">
-                    <h3>Company</h3>
-                    <ul class="list">
-                        <li><a href="about-1.html">About Us</a></li>
-                        <li><a href="services-1.html">Services</a></li>
-                        <li><a href="features.html">Features</a></li>
-                        <li><a href="pricing.html">Our Pricing</a></li>
-                        <li><a href="blog-1.html">Latest News</a></li>
-                    </ul>
-                </div>
-            </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget">
                     <h3>Support</h3>
                     <ul class="list">
-                        <li><a href="faq.html">FAQ's</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-conditions.html">Terms & Condition</a></li>
-                        <li><a href="contact.html">Support Us</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="{{route('faq')}}">FAQ's</a></li>
+                        <li><a href="{{route('privacy_policy')}}">Privacy Policy</a></li>
+                        <li><a href="{{route('terms_conditions')}}">Terms & Condition</a></li>
+                        <li><a href="{{route('contact')}}">Support Us</a></li>
+                        <li><a href="{{route('contact')}}">Contact Us</a></li>
                     </ul>
                 </div>
             </div>

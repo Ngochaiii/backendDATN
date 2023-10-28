@@ -14,6 +14,8 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\HomepageController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\Web\CartController;
+use App\Http\Controllers\Web\InforController;
 use App\Http\Controllers\Web\TicketController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\WebController;
@@ -120,6 +122,20 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             });
             Route::group(['prefix' => 'wishlists'], function () {
                 Route::get('/{id}', [WishlistsController::class, 'save_wishlist'])->name('wishlists');
+            });
+            Route::group(['prefix' => 'cart'], function () {
+                Route::post('/add-cart', [CartController::class, 'save_cart'])->name('addCart');
+                Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
+                Route::post('/update-qty-cart/{id}', [CartController::class, 'update_quantity'])->name('updateCart');
+                Route::get('/delete-cart/{rowId}', [CartController::class, 'delete_cart'])->name('deleteCart');
+            });
+            Route::group(['prefix' => 'infor'], function () {
+                Route::get('/contact', [InforController::class, 'contact'])->name('contact');
+                Route::get('/faq', [InforController::class, 'faq'])->name('faq');
+                Route::get('/feedback', [InforController::class, 'feedback'])->name('feedback');
+                Route::get('/terms_conditions', [InforController::class, 'terms_conditions'])->name('terms_conditions');
+                Route::get('/privacy_policy', [InforController::class, 'privacy_policy'])->name('privacy_policy');
+                Route::get('/about_us', [InforController::class, 'about_us'])->name('about_us');
             });
         });
     });

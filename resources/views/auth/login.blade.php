@@ -8,7 +8,7 @@
                 <div class="col-md-8 col-lg-6 col-xxl-3">
                     <div class="card mb-0">
                         <div class="card-body">
-                            <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                            <a href="" class="text-nowrap logo-img text-center d-block py-3 w-100">
                                 <img src="../assets/images/logos/dark-logo.svg" width="180" alt="">
                             </a>
                             <p class="text-center">Your Social Campaigns</p>
@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-4">
 
-                                    <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
+                                    <a class="text-primary fw-bold" href="">Forgot Password ?</a>
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign
                                     In</button>

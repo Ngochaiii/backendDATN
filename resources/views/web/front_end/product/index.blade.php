@@ -60,13 +60,16 @@
                                             data-url="{{ route('home.product.show', $product->product_id) }}"
                                             data-bs-toggle="modal" data-bs-target="#productsModalCenter"><i
                                                 data-feather="search"></i></a></li> --}}
-                                    <li><a href="{{route('wishlists',$product->product_id)}}"><i data-feather="heart"></i></a></li>
+                                    <li><a href="{{ route('wishlists', $product->product_id) }}"><i
+                                                data-feather="heart"></i></a></li>
 
                                 </ul>
                             </div>
 
                             <div class="products-content">
-                                <h3><a href="{{route('home.product.detail',$product->product_id)}}">{{ $product->name }}</a></h3>
+                                <h3><a
+                                        href="{{ route('home.product.detail', $product->product_id) }}">{{ $product->name }}</a>
+                                </h3>
                                 @if (isset($product->sale_price))
                                     <span
                                         style="color: brown;font-size:15px">{{ number_format($product->sale_price, 0, '', ',') }}
@@ -84,7 +87,15 @@
                                     <li><i class="flaticon-star-1"></i></li>
                                     <li><i class="flaticon-star-1"></i></li>
                                 </ul>
-                                <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                                <form action="{{ route('addCart') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                                    <button type="submit" class="add-to-cart-btn">
+                                        Thêm vào giỏ hàng
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                </form>
                             </div>
                             @if (isset($product->sale_price))
                                 <div class="sale-btn">
