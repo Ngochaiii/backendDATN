@@ -18,7 +18,7 @@ class CreateCheckoutsTable extends Migration
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('product_id');
             $table->integer('quantity');
-            $table->decimal('total_price', 8, 2);
+            $table->string('total_price');
             $table->timestamps();
         });
     }

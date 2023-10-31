@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('city');
             $table->string('district');
             $table->string('specific_address');
-            $table->decimal('total', 8, 2);
+            $table->string('total');
             $table->integer('quantity');
             $table->tinyInteger('ship_method');
             $table->tinyInteger('pay_method');

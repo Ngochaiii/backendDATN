@@ -49,6 +49,7 @@ class ProductController extends Controller
         $compacts = [
 
             'siteTitle' => 'Shop',
+            'allProducts' => Product::all(),
             "products" => self::getProducts($filters),
             "filters" => $filters,
         ];

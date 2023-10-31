@@ -29,7 +29,7 @@
                 <div class="row align-items-center">
                     <div class="col-3">
                         <div class="woocommerce-result-count">
-                            <p>Showing 1-8 of 14 results</p>
+                            <p>Showing 1-8 of {{count($allProducts)}} results</p>
                         </div>
                     </div>
 

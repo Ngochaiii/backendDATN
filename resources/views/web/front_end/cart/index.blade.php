@@ -123,7 +123,7 @@
                             <ul>
                                 <li>Total <span><b>{{ number_format($total, 0, '', ',') }} Vnđ</b></span></li>
                             </ul>
-                            <a href="#" class="btn btn-primary">Proceed to Checkout</a>
+                            <a href="{{route('checkout')}}" class="btn btn-primary">Tiến hành thanh toán</a>
                         </div>
                     </form>
                 </div>

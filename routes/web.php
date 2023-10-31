@@ -15,6 +15,7 @@ use App\Http\Controllers\Web\HomepageController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\Web\CartController;
+use App\Http\Controllers\Web\CheckoutController;
 use App\Http\Controllers\Web\InforController;
 use App\Http\Controllers\Web\TicketController;
 use Illuminate\Support\Facades\Route;
@@ -78,6 +79,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::group(['prefix' => 'order'], function () {
                 Route::get('/', [OrderController::class, 'index'])->name('order');
                 Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
+
             });
             Route::group(['prefix' => 'transpost'], function () {
                 Route::post('/add', [TransportController::class, 'index'])->name('transpost.add');
@@ -136,6 +138,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 Route::get('/terms_conditions', [InforController::class, 'terms_conditions'])->name('terms_conditions');
                 Route::get('/privacy_policy', [InforController::class, 'privacy_policy'])->name('privacy_policy');
                 Route::get('/about_us', [InforController::class, 'about_us'])->name('about_us');
+            });
+            Route::group(['prefix' => 'checkout'], function () {
+                Route::get('/', [CheckoutController::class, 'index'])->name('checkout');
+                Route::post('/create', [CheckoutController::class, 'store'])->name('order.create');
             });
         });
     });
