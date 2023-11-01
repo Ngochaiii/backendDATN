@@ -42,32 +42,16 @@
                     @if ($checkout->product)
                         @php
                             $total = $order->quantity * $checkout->product->price;
-                            $ship_1 = number_format(30000, 0, '', ',');
-                            $ship_2 = number_format(50000, 0, '', ',');
-                            $total_ship_1 = $total + 30000;
-                            $total_ship_2 = $total + 50000;
                         @endphp
                         <div class="sub-info name">Name: {{ $checkout->product->name }}.</div>
-                        <div class="sub-info address">Tổng số tiền: {{ number_format($total, 0, '', ',') }}vnd.</div>
-                        <div class="sub-info time">Phương thức Vận chuyển :{{ $order->ship_methodName }}</div>
-                        <div class="sub-info message ">
-                            <p style="text-decoration: overline"><strong>Tổng số tiền:</strong></p>
-                            <p>{{ number_format($total, 0, '', ',') }}vnd</p>
-                            <p>+</p>
-                            @if ($order->ship_method == 1)
-                                <p>{{ $ship_1 }}</p>
-                                <p style="text-decoration: overline">
-                                    <strong>{{ number_format($total_ship_1, 0, '', ',') }}vnd</strong>
-                                </p>
-                            @else
-                                <p>{{ $ship_2 }}</p>
-                                <p style="text-decoration: overline">
-                                    <strong>{{ number_format($total_ship_2, 0, '', ',') }}vnd</strong>
-                                </p>
-                            @endif
-                        </div>
                     @endif
                 @endforeach
+                <div class="sub-info address">Tổng số tiền: {{ number_format($order->total, 0, '', ',') }}vnd.</div>
+                <div class="sub-info time">Phương thức Vận chuyển :{{ $order->ship_methodName }}</div>
+                <div class="sub-info message ">
+                    <p style="text-decoration: overline"><strong>Tổng số tiền:</strong></p>
+                    <p>{{ number_format($order->total, 0, '', ',') }}vnd</p>
+                </div>
             </div>
         </div>
     </div>

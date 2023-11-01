@@ -46,9 +46,9 @@ class CheckoutController extends Controller
         $order->specific_address = $request->specific_address;
         $order->total = $request->quantity;
         $order->ship_method = $request->ship_method;
-        $order->ship_method = $request->ship_method;
         $order->quantity = $total;
         if (!is_null($request->bill_image)) {
+            $order->pay_method = 2;
             $file = $request->file('bill_image');
             $fileName = uniqid() . '_' . $file->getClientOriginalName();
             $file->move('file/bill_image', $fileName);

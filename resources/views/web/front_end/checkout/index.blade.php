@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <form action="{{ route('order.create') }}" method="POST">
+            <form action="{{ route('order.create') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
@@ -163,7 +163,9 @@
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span  class="subtotal-amount"><input style="border: 0" id="total" hidden type="number" value="{{$total }}">{{ number_format($total, 0, '', ',') }}</span>
+                                                <span class="subtotal-amount"><input style="border: 0" id="total"
+                                                        hidden type="number"
+                                                        value="{{ $total }}">{{ number_format($total, 0, '', ',') }}</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -181,7 +183,9 @@
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span><input id="order_total" type="number" style="border: 0" hidden class="subtotal-amount" name="quantity" value=""><span id="subtotal"></span></span>
+                                                <span><input id="order_total" type="number" style="border: 0" hidden
+                                                        class="subtotal-amount" name="quantity" value=""><span
+                                                        id="subtotal"></span></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -190,14 +194,14 @@
 
                             <div class="payment-method">
                                 <p>
-                                    <input type="radio" id="direct-bank-transfer" name="pay_method" value="1" checked>
-                                    <label for="direct-bank-transfer">Thanh toán khi nhận hàng</label>
+                                    <input type="checkbox" id="checkbox1" name="pay_method" value="1">
+                                    <label for="direct-bank-transfer">Thanh toán khi nhận hàng</label><br>
 
                                     Make your payment directly into our bank account. Please use your Order ID as the
                                     payment reference. Your order will not be shipped until the funds have cleared in our
                                     account.
                                 </p>
-                                <div class="col services-details">
+                                <div class="col services-details" id="autoUpdate">
                                     <div class="services-details-desc">
                                         <div class="services-details-accordion">
                                             <ul class="accordion">
@@ -245,25 +249,47 @@
         let total = document.querySelector('#total').value;
         let orderTotal = document.querySelector('#order_total');
         let subtotal = document.querySelector('#subtotal');
-        const ship1 =30000;
+        const ship1 = 30000;
         const ship2 = 45000;
         select.addEventListener("change", (e) => {
             const target = e.target.value;
             // console.log(subtotal);
             if (target == 1) {
-                valueShip.innerHTML = ship1.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+                valueShip.innerHTML = ship1.toLocaleString('it-IT', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
                 let orderTotal_1 = Number(total) + ship1;
                 orderTotal.value = orderTotal_1;
-                subtotal.innerHTML = orderTotal_1.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+                subtotal.innerHTML = orderTotal_1.toLocaleString('it-IT', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
             } else {
-                valueShip.innerHTML = ship2.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+                valueShip.innerHTML = ship2.toLocaleString('it-IT', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
                 let orderTotal_2 = Number(total) + ship2;
                 orderTotal.value = orderTotal_2;
-                subtotal.innerHTML = orderTotal_2.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+                subtotal.innerHTML = orderTotal_2.toLocaleString('it-IT', {
+                    style: 'currency',
+                    currency: 'VND'
+                });
             }
             console.log(orderTotal.value);
         });
-
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#checkbox1').change(function() {
+                if (!this.checked)
+                    //  ^
+                    $('#autoUpdate').fadeIn('slow');
+                else
+                    $('#autoUpdate').fadeOut('slow');
+            });
+        });
     </script>
 @endpush
 @push('css')
