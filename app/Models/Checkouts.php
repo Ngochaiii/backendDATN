@@ -11,7 +11,7 @@ class Checkouts extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'order_id',
-        'pro_id',
+        'product_id',
         'quantity',
         'total_price',
     ];

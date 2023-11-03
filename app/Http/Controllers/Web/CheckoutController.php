@@ -72,6 +72,6 @@ class CheckoutController extends Controller
             Product::where('product_id', $check->id)->update(['quantity' => $pro_quantity - $check->qty]);
         }
         Cart::destroy();
-        return redirect()->route('home')->with('success', 'Thành công');
+        return redirect()->route('order_tracking')->with('success', 'Thành công');
     }
 }

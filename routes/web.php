@@ -14,9 +14,11 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\HomepageController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\CheckoutController;
 use App\Http\Controllers\Web\InforController;
+use App\Http\Controllers\Web\OrderTrackingController;
 use App\Http\Controllers\Web\TicketController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\WebController;
@@ -142,6 +144,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::group(['prefix' => 'checkout'], function () {
                 Route::get('/', [CheckoutController::class, 'index'])->name('checkout');
                 Route::post('/create', [CheckoutController::class, 'store'])->name('order.create');
+            });
+            Route::group(['prefix' => 'order-tracking'], function () {
+                Route::get('/', [OrderTrackingController::class, 'index'])->name('order_tracking');
+            });
+            Route::group(['prefix' => 'blogs'], function () {
+                Route::get('/', [BlogController::class, 'index'])->name('blogs');
             });
         });
     });

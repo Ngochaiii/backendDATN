@@ -33,7 +33,16 @@
                 <div class="sub-info address">Địa chỉ cụ thể : {{ $order->specific_address }} </div>
                 <div class="sub-info time">Thời gian đặt : {{ $order->created_at }}</div>
                 <div class="sub-info time">Lưu ý khi nhận hàng</div>
-                <div class="sub-info message">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
+                <div class="sub-info message">Hóa đơn chuyển tiền.</div>
+                @if (isset($order->bill_image))
+                    <div class="">
+                        <a href="{{ asset('/file/bill_image/' . $order->bill_image) }}" target="_blank">
+                            <img style="   height: 100px;" src="{{ asset('/file/bill_image/' . $order->bill_image) }}"
+                                alt="Italian Trulli">
+                        </a>
+                    </div>
+                @endif
+
             </div>
             <div class="dropoff">Thông tin Vận chuyển
                 {{-- {{dd($order->checkouts)}} --}}

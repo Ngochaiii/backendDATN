@@ -19,7 +19,7 @@
 
                     </li>
 
-                    <li class="nav-item"><a href="#" class="nav-link">Blog</a>
+                    <li class="nav-item"><a href="{{route('blogs')}}" class="nav-link">Blog</a>
                     </li>
 
                     <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
