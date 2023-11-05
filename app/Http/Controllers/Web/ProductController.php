@@ -67,15 +67,29 @@ class ProductController extends Controller
         } //end if
         $compacts = [
             'siteTitle' => 'Chi tiết sản phẩm',
-            'product' =>$product,
+            'product' => $product,
         ];
 
-        return view('web.front_end.product.detail',$compacts );
+        return view('web.front_end.product.detail', $compacts);
     }
     public function show($id)
     {
         $product = Product::find($id);
 
         return response()->json($product);
+    }
+    public function review(Request $request, int $id)
+    {
+
+        $product = Product::find($id);
+        $data = json_decode($product->review);
+        $dataReview = array();
+        $dataReview = ['user' => $request->name, 'review' => $request->review_message, 'email' => $request->email];
+
+        $data[] = $dataReview;
+        // dd($lastData,$dataReview);
+        $product->review = json_encode($data);
+        $product->save();
+        return redirect()->back();
     }
 }

@@ -115,6 +115,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 Route::get('/', [WebProductController::class, 'index'])->name('home.product');
                 Route::get('/{id}', [WebProductController::class, 'show'])->name('home.product.show');
                 Route::get('/detail/{id}', [WebProductController::class, 'edit'])->name('home.product.detail');
+                Route::post('/{id}', [WebProductController::class, 'review'])->name('home.product.review');
             });
             Route::group(['prefix' => 'ticket'], function () {
                 Route::get('/', [TicketController::class, 'index'])->name('panel.ticket');
@@ -129,6 +130,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             });
             Route::group(['prefix' => 'cart'], function () {
                 Route::post('/add-cart', [CartController::class, 'save_cart'])->name('addCart');
+                Route::post('/buy-now', [CartController::class, 'buy_now'])->name('buyNow');
                 Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
                 Route::post('/update-qty-cart/{id}', [CartController::class, 'update_quantity'])->name('updateCart');
                 Route::get('/delete-cart/{rowId}', [CartController::class, 'delete_cart'])->name('deleteCart');
@@ -150,6 +152,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             });
             Route::group(['prefix' => 'blogs'], function () {
                 Route::get('/', [BlogController::class, 'index'])->name('blogs');
+                Route::get('/{id}', [BlogController::class, 'detail'])->name('single_blog');
             });
         });
     });

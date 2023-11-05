@@ -43,7 +43,7 @@
                                             class="btn btn-primary btn-sm mb-2 mr-2">
                                             Cập nhật
                                         </a>
-                                        <a href="#" target="_blank"
+                                        <a href="{{route('single_blog',$item->id)}}" target="_blank"
                                             class="btn btn-info btn-sm mb-2 mr-2">
                                             Xem bài viết
                                         </a>

@@ -25,7 +25,7 @@
                     @else
                         <div class="slides fade" style="background-color: burlywood">
                             <div class="number-text">1</div>
-                            <img src="{{ $products->pro_image }}" style="width:100%">
+                            <img src="{{ asset('assets/images/products/s7.jpg') }}" style="width:100%">
                         </div>
                     @endif
                 </div>

@@ -47,10 +47,10 @@
 
                 <div class="col-lg-7">
                     <div class="products-details">
-                        <h3>{{ $product->name }}l</h3>
+                        <h3>{{ $product->name }}</h3>
 
                         <div class="price">
-                            <a id="price">{{ rmat($product->price, 0, '', ',') }}</a>
+                            <a id="price">{{ number_format($product->price, 0, '', ',') }}</a>
                             <a>vnđ</a> <br>
 
                             <a>Giá Sale :</a><a id="sale-price"
@@ -75,23 +75,32 @@
                                 Availability: <span>Out Of Stock</span>
                             </div>
                         @endif
-                        <form>
+                        <form action="{{ route('addCart') }}" method="post">
+                            @csrf
                             <div class="quantity d-flex align-items-center">
                                 <span>Quantity:</span>
                                 <div class="input-counter">
                                     <span class="minus-btn"><i data-feather="minus"></i></span>
-                                    <input type="text" min="1"  value="1">
+                                    <input type="text" name="quantity" min="1" value="1">
                                     <span class="plus-btn"><i data-feather="plus"></i></span>
                                 </div>
+                                <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                             </div>
                             <button type="submit">Add to Cart</button>
-                            <a href="#" class="add-to-wishlist-btn" title="Add to Wishlist"><i
-                                    data-feather="heart"></i></a>
-
-                            <div class="buy-btn">
-                                <a href="#" class="btn btn-primary">Buy it Now</a>
-                            </div>
+                            <a href="{{ route('wishlists', $product->product_id) }}" class="add-to-wishlist-btn"
+                                title="Add to Wishlist"><i data-feather="heart"></i></a>
                         </form>
+                        <div class="buy-btn" style="margin-top:15px">
+                            <form action="{{ route('buyNow') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="quantity" value="1">
+                                <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                                <button type="submit" class="btn btn-primary">
+                                    Mua ngay
+                                    <i class="fa fa-shopping-cart"></i>
+                                </button>
+                            </form>
+                        </div>
 
                         <div class="custom-payment-options">
                             <span>Guaranteed safe checkout:</span>
@@ -111,11 +120,13 @@
                             <span>Share:</span>
 
                             <ul>
-                                <li><a href="#" class="facebook" target="_blank"><i data-feather="facebook"></i></a>
+                                <li><a href="#" class="facebook" target="_blank"><i
+                                            data-feather="facebook"></i></a>
                                 </li>
                                 <li><a href="#" class="twitter" target="_blank"><i data-feather="twitter"></i></a>
                                 </li>
-                                <li><a href="#" class="linkedin" target="_blank"><i data-feather="linkedin"></i></a>
+                                <li><a href="#" class="linkedin" target="_blank"><i
+                                            data-feather="linkedin"></i></a>
                                 </li>
                                 <li><a href="#" class="instagram" target="_blank"><i
                                             data-feather="instagram"></i></a>
@@ -135,26 +146,53 @@
 
                         <div class="content show" id="tab_1_content">
                             <div class="products-description">
-                                <p>{{$product->description}}</p>
+                                <p>{{ $product->description }}</p>
                             </div>
                         </div>
 
                         <div class="content" id="tab_2_content">
                             <div class="products-description">
                                 <ul class="additional-information">
-                                    <li><span>Brand</span> {{$product->branch->name}}</li>
-                                    <li><span>Category</span> {{$product->category->name}}</li>
+                                    <li><span>Brand</span> {{ $product->branch->name }}</li>
+                                    <li><span>Category</span> {{ $product->category->name }}</li>
                                     <li><span>Size</span> Large, Medium</li>
                                     <li><span>Cân nặng</span> 27 kg</li>
                                     <li><span>Kích thước mẫu </span> 16 x 22 x 123 cm</li>
                                 </ul>
                             </div>
                         </div>
-
+                        @php
+                            $data = json_decode($product->review);
+                            // dd($data);
+                        @endphp
                         <div class="content" id="tab_3_content">
                             <div class="products-reviews">
                                 <h3>Customer Reviews</h3>
-                                <p>There are no reviews yet.</p>
+                                <ol class="comment-list">
+                                    @foreach ($data as $item)
+                                        <li class="comment">
+                                            <article class="comment-body">
+                                                <footer class="comment-meta">
+                                                    <div class="comment-author vcard">
+                                                        <b class="fn">{{$item->user}}</b>
+                                                        <span class="says">says:</span>
+                                                    </div>
+
+                                                    <div class="comment-metadata">
+                                                        <a href="#">
+                                                            <time>April 24, 2019 at 10:59 am</time>
+                                                        </a>
+                                                    </div>
+                                                </footer>
+
+                                                <div class="comment-content">
+                                                    <p>{{$item->review}}.</p>
+                                                </div>
+                                            </article>
+
+                                        </li>
+                                    @endforeach
+                                </ol>
 
                                 <form class="review-form">
                                     <p>Rate this item</p>
@@ -213,23 +251,28 @@
                                         </label>
                                     </div>
 
+                                </form>
+                                <form action="{{ route('home.product.review', $product->product_id) }}" method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <textarea name="review-message" id="message" cols="30" rows="4" placeholder="Write your review*"
+                                                <textarea name="review_message" id="message" cols="30" rows="4" placeholder="Write your review*"
                                                     class="form-control"></textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" placeholder="Name*" class="form-control">
+                                                <input type="text" value="{{ Auth::user()->name }}"
+                                                    placeholder="Name*" name="name" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="email" placeholder="Email*" class="form-control">
+                                                <input type="email" placeholder="Email*" name="email"
+                                                    class="form-control">
                                             </div>
                                         </div>
 

@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
                     'sale_price' => 420000,
                     'status' => 1,
                     'featured' => 2,
-                    'review' => "OKKK"
+                    'review' => "[]"
                 ]
             );
         }
