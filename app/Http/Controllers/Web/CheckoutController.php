@@ -69,7 +69,10 @@ class CheckoutController extends Controller
                 'total_price' => $total_prices,
             ]);
             $pro_quantity = Product::find($check->id)->quantity;
-            Product::where('product_id', $check->id)->update(['quantity' => $pro_quantity - $check->qty]);
+            // dd($pro_quantity - $check->qty);
+            $product = Product::find($check->id);
+            $product->quantity = $pro_quantity - $check->qty;
+            $product->save();
         }
         Cart::destroy();
         return redirect()->route('order_tracking')->with('success', 'Thành công');

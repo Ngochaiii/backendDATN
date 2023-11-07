@@ -81,11 +81,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $file = $request->file('image');
-        $fileName = uniqid() . '_' . $file->getClientOriginalName();
-        $file->move('file/blogs', $fileName);
-        $post = new Post;
 
+
+        $post = new Post;
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $fileName = uniqid() . '_' . $file->getClientOriginalName();
+            $file->move('file/blogs', $fileName);
+            $post->image = $fileName;
+        }
         $post->title = $request->title;
         $slug = Str::slug($request->title, '-');
         $post->slug = $slug . '_' . rand();
@@ -95,7 +99,6 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->content = $request->content;
         $post->type = (int) $request->type;
-        $post->image = $fileName;
         $post->status = (int) $request->status;
         if ($request->created_at) {
             $post->created_at = $request->created_at;

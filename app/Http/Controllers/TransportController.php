@@ -40,6 +40,7 @@ class TransportController extends Controller
     }
     public static function index(Request $request)
     {
+        // dd($request->all());
         $order_id = $request->order_id;
         if ($request->status == 1) {
             $order = Orders::find($order_id);

@@ -78,10 +78,11 @@
                                                     <span class="plus-btn"><i data-feather="plus"></i></span>
                                                 </div>
                                             </td>
-
+                                            {{-- {{dd($item->id)}} --}}
+                                            <input type="number" name="product_" value="{{ $item->id }}" hidden>
                                             <td class="product-subtotal">
-                                                <span
-                                                    class="subtotal-amount">{{ number_format($item->price * $item->qty, 0, '', ',') }}
+                                                <span class="subtotal-amount"
+                                                    id="subtotal_amount">{{ number_format($item->price * $item->qty, 0, '', ',') }}
                                                     vnđ</span>
 
                                                 <a href="{{ route('deleteCart', $item->rowId) }}" class="remove"><i
@@ -113,7 +114,7 @@
                         $price = Cart::content();
                         $total = 0;
                         foreach ($price as $key => $value) {
-                            $total += $value->price;
+                            $total += $value->price * $value->qty;
                         }
                     @endphp
                     <div class="cart-totals">
@@ -131,3 +132,9 @@
     </div>
     <!-- End Cart Area -->
 @endsection
+@push('footer_js')
+    <script>
+        let total = document.querySelectorAll('#subtotal_amount')
+        console.log(total);
+    </script>
+@endpush

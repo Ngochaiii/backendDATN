@@ -41,8 +41,7 @@
                             </div>
 
                             <h3>{{$blog->title}}</h3>
-
-                            <p>{{$blog->content}}</p>
+                            <div>{{$blog->content}}</div>
 
                             <ul class="wp-block-gallery columns-3">
                                 <li class="blocks-gallery-item">

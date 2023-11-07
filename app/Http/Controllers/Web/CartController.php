@@ -15,6 +15,9 @@ class CartController extends Controller
         $pro_id = $request->product_id;
         $quantity = $request->quantity;
         $getpro = Product::find($pro_id);
+        if ($getpro->quantity == 0 ) {
+            return redirect()->back()->with('alert', 'chỉ còn lại duy nhất một sản phẩm');
+        }
         $pro_name = $getpro->name;
         $pro_image = $getpro->pro_image;
         if (isset($getpro->sale_price)) {
@@ -55,6 +58,11 @@ class CartController extends Controller
     public function update_quantity(Request $request, $rowId)
     {
         // dd($request->all());
+        $product = Product::find($request->product_);
+        // dd($request->all(), $product , $product->quantity - $request->qty);
+        if ($product->quantity - $request->qty <= -1 ) {
+            return redirect()->back()->with('alert', 'sản phẩm vượt quá số lượng có sẵn');
+        }
         Cart::update($rowId, $request->qty);
 
         return redirect()->back();

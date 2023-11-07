@@ -29,7 +29,7 @@
                 <div class="row align-items-center">
                     <div class="col-3">
                         <div class="woocommerce-result-count">
-                            <p>Showing 1-8 of {{count($allProducts)}} results</p>
+                            <p>Showing 1-8 of {{ count($allProducts) }} results</p>
                         </div>
                     </div>
 
@@ -87,14 +87,22 @@
                                     <li><i class="flaticon-star-1"></i></li>
                                     <li><i class="flaticon-star-1"></i></li>
                                 </ul>
+                                <p>Còn lại {{ $product->quantity }} sản phẩm</p>
                                 <form action="{{ route('addCart') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="quantity" value="1">
                                     <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-                                    <button type="submit" class="add-to-cart-btn">
-                                        Thêm vào giỏ hàng
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </button>
+                                    @if ($product->quantity == 0)
+                                        <a href="#" class="add-to-cart-btn" style="background-color: brown">
+                                            Hết hàng
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </a>
+                                    @else
+                                        <button type="submit" class="add-to-cart-btn">
+                                            Thêm vào giỏ hàng
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </button>
+                                    @endif
                                 </form>
                             </div>
                             @if (isset($product->sale_price))

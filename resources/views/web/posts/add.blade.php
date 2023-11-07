@@ -20,7 +20,7 @@
                                     <input type="file" id="banner_image_{{ $form_data->id }}" name="image"
                                         class="d-none" value="{{ $form_data->image ?? '' }}" accept="image/*"
                                         onchange="loadFile(event, 'preview_file_{{ $form_data->id }}')">
-                                    <img src="{{ asset($form_data->image ?? '') }}" id="preview_file_{{ $form_data->id }}"
+                                    <img src="{{ asset('/file/blogs/' . $form_data->image ?? '') }}" id="preview_file_{{ $form_data->id }}"
                                         class="img-fluid {{ isset($form_data->image) ? '' : 'd-none' }}"
                                         style="width: 100px; height:100px; object-fit: contain;" alt="">
                                     <span id="preview_file_{{ $form_data->id }}_plus"
