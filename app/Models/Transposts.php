@@ -33,19 +33,22 @@ class Transposts extends Model
     {
         return self::ACTIONS[$this->status];
     }
+    const TYPE_COMPLETED = 4;
     const TYPE_WAIT = 1;
     const TYPE_DELIVERING = 2;
     const TYPE_CANCELLED = 3;
     const TYPES_ARR = [
         self::TYPE_WAIT,
         self::TYPE_DELIVERING,
-        self::TYPE_CANCELLED
+        self::TYPE_CANCELLED,
+        self::TYPE_COMPLETED
     ];
 
     const TYPES = [
         self::TYPE_WAIT => 'Chờ xác nhận',
         self::TYPE_DELIVERING => 'Đang giao',
         self::TYPE_CANCELLED => 'Hủy giao',
+        self::TYPE_COMPLETED => 'giao hàng thành công',
     ];
     public function getTypeNameAttribute()
     {

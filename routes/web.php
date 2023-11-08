@@ -89,6 +89,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 Route::get('/infor-shipper/{id}', [TransportController::class, 'call'])->name('transposts.call');
                 Route::get('/show/{id}', [TransportController::class, 'destroy'])->name('transposts.delete');
                 Route::get('/done/{id}', [TransportController::class, 'access'])->name('transposts.call_shipper');
+                Route::get('/completed/{id}', [TransportController::class, 'completed'])->name('transposts.completed');
                 // Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
             });
             Route::group(['prefix' => 'tickets'], function () {

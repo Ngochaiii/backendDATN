@@ -29,7 +29,7 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="blog-details-desc">
                         <div class="article-image">
-                            <img src="{{asset('/file/blogs/' . $blog->image)}}" alt="image">
+                            <img src="{{asset('/file/blogs/'.$blog->image)}}" alt="image">
                         </div>
 
                         <div class="article-content">
@@ -41,7 +41,7 @@
                             </div>
 
                             <h3>{{$blog->title}}</h3>
-                            <div>{{$blog->content}}</div>
+                            <div>{{!!$blog->content!!}}</div>
 
                             <ul class="wp-block-gallery columns-3">
                                 <li class="blocks-gallery-item">

@@ -14,7 +14,7 @@
                                 <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i
                                         class="fa fa-phone"></i>
                                     +1598675986 </div>
-                                <div class="col"> <strong>Status:</strong> <br> Picked by the courier </div>
+                                <div class="col"> <strong>Status:</strong> <br> {{$data_order[0]->status}} </div>
                                 <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
                             </div>
                         </article>

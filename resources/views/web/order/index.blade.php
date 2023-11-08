@@ -40,10 +40,38 @@
                                             Hóa Đơn</a>
                                     @elseif($row->status == 'decline')
                                         <a href="#" class="btn btn-sm btn-danger">Đơn hàng đã bị hủy </a>
-                                    @else
-                                        <a href="#" class="btn btn-sm btn-success">Đã có đơn hàng </a>
-                                    @endif
+                                    @elseif($row->status == 'processing')
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            Xán nhận hoàn thành
+                                        </button>
 
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Xác nhận </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Bạn xác nhận rằng shipper đã gửi hàng đến khách hàng !!!
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <a href="{{ route('transposts.completed', $row->order_id) }}"
+                                                            class="btn btn-primary">Xác nhận</nav></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <a href="#" class="btn btn-sm btn-process">Đơn hàng đã hoàn thành </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

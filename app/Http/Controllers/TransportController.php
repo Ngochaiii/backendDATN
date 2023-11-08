@@ -44,12 +44,17 @@ class TransportController extends Controller
         $order_id = $request->order_id;
         if ($request->status == 1) {
             $order = Orders::find($order_id);
-            $order->status = "completed";
+            $order->status = "processing";
             $order->save();
         }
         if ($request->status == 0) {
             $order = Orders::find($order_id);
             $order->status = "decline";
+            $order->save();
+        }
+        if ($request->status == 4) {
+            $order = Orders::find($order_id);
+            $order->status = "completed";
             $order->save();
         }
 
@@ -98,6 +103,17 @@ class TransportController extends Controller
         // dd($id);
         $transport = Transposts::find($id);
         $transport->type = 2;
+        $transport->save();
+        return redirect()->route('transposts')->with('success', 'Thành công');
+    }
+    public function completed(int $id)
+    {
+        $order = Orders::where('order_id', $id)->first();
+        $order->status = "completed";
+        $order->save();
+        $transport = Transposts::where('order_id',$id)->first();
+        // dd($transport,$id);
+        $transport->type = 4;
         $transport->save();
         return redirect()->route('transposts')->with('success', 'Thành công');
     }
