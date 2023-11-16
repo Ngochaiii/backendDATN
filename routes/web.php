@@ -17,6 +17,7 @@ use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\CheckoutController;
+use App\Http\Controllers\Web\EventController as WebEventController;
 use App\Http\Controllers\Web\InforController;
 use App\Http\Controllers\Web\OrderTrackingController;
 use App\Http\Controllers\Web\TicketController;
@@ -81,7 +82,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::group(['prefix' => 'order'], function () {
                 Route::get('/', [OrderController::class, 'index'])->name('order');
                 Route::get('/show/{id}', [OrderController::class, 'show'])->name('order.show');
-
             });
             Route::group(['prefix' => 'transpost'], function () {
                 Route::post('/add', [TransportController::class, 'index'])->name('transpost.add');
@@ -154,6 +154,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::group(['prefix' => 'blogs'], function () {
                 Route::get('/', [BlogController::class, 'index'])->name('blogs');
                 Route::get('/{id}', [BlogController::class, 'detail'])->name('single_blog');
+            });
+            Route::group(['prefix' => 'events'], function () {
+                Route::get('/', [WebEventController::class, 'index'])->name('event');
             });
         });
     });
