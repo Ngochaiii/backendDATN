@@ -24,7 +24,7 @@ class CheckoutController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->all());
+
         // insert order
         $price = Cart::content();
         $total = 0;
