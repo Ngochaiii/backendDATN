@@ -14,6 +14,7 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\HomepageController;
 use App\Http\Controllers\Web\ProductController as WebProductController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\Web\BlogController;
 use App\Http\Controllers\Web\CartController;
 use App\Http\Controllers\Web\CheckoutController;
@@ -105,6 +106,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
                 Route::get('/{key}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
                 Route::post('/{key}/edit', [PostController::class, 'update'])->name('admin.posts.update');
                 Route::post('/{key}/delete', [PostController::class, 'delete'])->name('admin.posts.delete');
+            });
+            Route::group(['prefix' => 'vouchers'], function () {
+                route::get('/', [VoucherController::class, 'index'])->name('admin.vouchers');
+                route::get('/create', [VoucherController::class, 'create'])->name('admin.vouchers.create');
+
             });
         });
     });

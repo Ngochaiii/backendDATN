@@ -15,6 +15,14 @@ class CreateVouchersTable extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
+            $table->string('type');
+            $table->decimal('value', 8, 2);
+            $table->date('expiration_date');
+            $table->decimal('min_order_value', 8, 2)->nullable();
+            $table->integer('max_uses')->nullable();
+            $table->integer('uses')->default(0);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
