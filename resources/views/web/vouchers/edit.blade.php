@@ -6,7 +6,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        <form method="post" action="{{ route('admin.vouchers.store') }}" id="voucherForm">
+                        <form method="post" action="{{ route('admin.vouchers.update', $voucher->id) }}">
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <h6 class="mb-2 text-primary">Chi tiết voucher</h6>
@@ -17,39 +17,40 @@
                                     <div class="form-group">
                                         <label for="code">Mã Code</label>
                                         <input type="text" class="form-control" name="code"
-                                            placeholder="Enter Mã Code">
+                                            value="{{ $voucher->code }}" placeholder="Enter Mã Code">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="expiration_date">Loại voucher</label>
-                                        <select class="form-select" name="type" id="type"
-                                            aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="percentage">Giảm giá phần trăm</option>
-                                            <option value="fixed">Giảm giá cố định</option>
+                                        <select class="form-select" name="type" aria-label="Default select example">
+                                            <option value="percentage"
+                                                {{ $voucher->type == 'percentage' ? 'selected' : '' }}>Giảm giá phần trăm
+                                            </option>
+                                            <option value="fixed" {{ $voucher->type == 'fixed' ? 'selected' : '' }}>Giảm
+                                                giá cố định</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="expiration_date">Ngày hết hạn</label>
-                                        <input type="date" class="form-control" name="expiration_date"
+                                        <input type="date" class="form-control" name="expiration_date" value="{{$voucher->expiration_date}}"
                                             placeholder="Nhập ngày hết hạn">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="value">Giá trị :</label>
-                                        <input type="text" class="form-control" id="value" name="value"
+                                        <input type="text" class="form-control" name="value" value="{{$voucher->value}}"
                                             placeholder="Giá trị của mã ">
-                                        <span id="valueError" style="color: red;"></span>
+
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="value">Giá trị đơn hàng tối thiểu để có thể sử dụng voucher :</label>
-                                        <input type="text" class="form-control" name="min_order_value"
+                                        <input type="text" class="form-control" name="min_order_value" value="{{$voucher->min_order_value}}"
                                             placeholder="Giá trị của mã ">
 
                                     </div>
@@ -57,7 +58,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="value"> Số lần sử dụng tối đa của vouche :</label>
-                                        <input type="text" class="form-control" name="max_uses"
+                                        <input type="text" class="form-control" name="max_uses" value="{{$voucher->max_uses}}"
                                             placeholder="Giá trị của mã ">
 
                                     </div>
@@ -73,7 +74,7 @@
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-right">
                                         <button type="button" class="btn btn-secondary">Cancel</button>
-                                        <button type="button" onclick="validateForm()" class="btn btn-primary">Update</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -157,39 +158,4 @@
             margin-bottom: 1rem;
         }
     </style>
-@endpush
-@push('footer_js')
-    <script>
-        function validateForm() {
-            var discountType = document.getElementById('type').value;
-            var valueField = document.getElementById('value');
-            var valueError = document.getElementById('valueError');
-
-            if (discountType === 'percentage' && (valueField.value < 0 || valueField.value > 100)) {
-                valueError.textContent = 'Giá trị phải nằm trong khoảng từ 0 đến 100.';
-                return;
-            }
-
-            // Xóa thông báo lỗi nếu giá trị hợp lệ
-            valueError.textContent = '';
-
-            // Tiếp tục submit biểu mẫu
-            document.getElementById('voucherForm').submit();
-        }
-        // Thêm sự kiện để ẩn hiện trường giá trị dựa trên loại giảm giá
-        document.getElementById('type').addEventListener('change', function() {
-            var valueField = document.getElementById('value');
-            // valueField.disabled = this.value === 'percentage';
-            valueField.required = this.value !== 'percentage';
-            valueField.placeholder = this.value === 'percentage' ? 'Phần trăm' : 'Số tiền cố định';
-            // Nếu là giảm giá phần trăm, giới hạn giá trị từ 0 đến 100
-            if (this.value === 'percentage') {
-                valueField.min = 0;
-                valueField.max = 100;
-            } else {
-                valueField.removeAttribute('min');
-                valueField.removeAttribute('max');
-            }
-        });
-    </script>
 @endpush

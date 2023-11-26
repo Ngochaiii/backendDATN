@@ -17,9 +17,9 @@ class CreateVouchersTable extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('type');
-            $table->decimal('value', 8, 2);
+            $table->string('value');
             $table->date('expiration_date');
-            $table->decimal('min_order_value', 8, 2)->nullable();
+            $table->decimal('min_order_value', 10, 2)->nullable();
             $table->integer('max_uses')->nullable();
             $table->integer('uses')->default(0);
             $table->boolean('active')->default(true);

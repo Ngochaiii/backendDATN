@@ -1,0 +1,1375 @@
+/* FONTS */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700|Roboto:400");
+
+/* MAIN*/
+#gmc18 {
+    max-width: 1200px;
+    font-size: 14px;
+    font-family: "Roboto", "Helvetica", Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+    background: #FAFAFA;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#gmc18 h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+#gmc18 p {
+    margin: 0;
+}
+
+/* UTILS */
+.gmc18-text-center {
+    text-align: center;
+}
+
+.gmc18-make-fullwidth {
+    width: 100% !important;
+}
+
+.gmc18-make-four {
+    width: 24% !important;
+}
+
+.gmc18-add-top-padding {
+    padding-top: 20px;
+}
+
+/* HEADER */
+.gmc18-header {
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center;
+}
+
+.gmc18-header-text {
+    position: relative;
+    padding: 20% 30px 10% 30px;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.gmc18-header-text h1 {
+    font-size: 20px;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: white;
+    padding-bottom: 15px;
+}
+
+.gmc18-header-text h2 {
+    font-size: 54px;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: white;
+}
+
+.gmc18-header-text h3 {
+    font-size: 54px;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: white;
+}
+
+.gmc18-header-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.4;
+    background: black;
+    z-index: 1;
+}
+
+.gmc18-logos-container {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-top: -8%;
+    padding: 0px 20px 30px 20px;
+    z-index: 2;
+}
+
+.gmc18-logos-container a {
+    position: relative;
+    width: 15.8%;
+    font-size: 14px;
+    color: #999999;
+    background: white;
+    -webkit-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 15px 15px 10px 15px;
+    margin-bottom: 25px;
+}
+
+.gmc18-logos-container a:hover {
+    -webkit-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gmc18-logo-wrapper {
+    min-height: 190px;
+    max-height: 190px;
+}
+
+.gmc18-logo-title {
+    font-size: 16px;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #020202;
+    text-transform: uppercase;
+    padding: 0px 0px 10px 0px;
+}
+
+.gmc18-logo-content {
+    max-height: 118px;
+    font-size: 14px;
+    color: #999999;
+    line-height: 1.4;
+    overflow: hidden;
+}
+
+.gmc18-logo {
+    text-align: center;
+    border-top: 1px solid #ECEDED;
+    padding: 15px 0px 0px 0px;
+}
+
+.gmc18-logo img {
+    display: inline-block;
+    max-height: 45px;
+    vertical-align: middle;
+}
+
+.gmc18-logo span {
+    display: inline-block;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    color: #999999;
+    text-transform: uppercase;
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+.gmc18-logo-cta {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -100px;
+    -o-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    text-align: center;
+    padding: 0px 15px 0px 15px;
+}
+
+.gmc18-logo-cta span {
+    display: inline-block;
+    width: 100%;
+    background: #282828;
+    color: white;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 15px 0px 15px 0px;
+}
+
+.gmc18-logos-container a:hover .gmc18-logo-cta {
+    bottom: 10px;
+    -o-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.gmc18-chevron::before {
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    left: 0px;
+    position: relative;
+    top: 3px;
+    -webkit-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    transform: rotate(135deg);
+    vertical-align: top;
+    margin-left: 3px;
+}
+
+/* SECTION */
+.gmc18-section {
+    width: 100%;
+}
+
+.gmc18-section-container {
+    padding: 0px 20px 30px 20px;
+}
+
+.gmc18-section-title {
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 40px;
+    color: #020202;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 60px 0px 0px 0px;
+}
+
+.gmc18-section-desc {
+    font-size: 16px;
+    color: #020202;
+    padding: 30px 0px 0px 0px;
+}
+
+.gmc18-section-desc span {
+    display: block;
+}
+
+.gmc18-section-desc a {
+    display: inline-block;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    background: #282828;
+    color: white;
+    padding: 15px 30px 15px 30px;
+    margin-top: 20px !important;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.gmc18-section-desc a:hover {
+    background: #020202;
+}
+
+/* TABS */
+.gmc18-tab-wrap {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.gmc18-tab {
+    display: none;
+}
+
+.gmc18-tab:checked:nth-of-type(1)~.gmc18-tab-content:nth-of-type(1) {
+    opacity: 1;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s -webkit-transform ease;
+    transition: 0.5s opacity ease-in, 0.2s -webkit-transform ease;
+    -o-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease, 0.2s -webkit-transform ease;
+    position: relative;
+    top: 0;
+    z-index: 2;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.gmc18-tab:checked:nth-of-type(2)~.gmc18-tab-content:nth-of-type(2) {
+    opacity: 1;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s -webkit-transform ease;
+    transition: 0.5s opacity ease-in, 0.2s -webkit-transform ease;
+    -o-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease, 0.2s -webkit-transform ease;
+    position: relative;
+    top: 0;
+    z-index: 2;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.gmc18-tab:checked:nth-of-type(3)~.gmc18-tab-content:nth-of-type(3) {
+    opacity: 1;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s -webkit-transform ease;
+    transition: 0.5s opacity ease-in, 0.2s -webkit-transform ease;
+    -o-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease, 0.2s -webkit-transform ease;
+    position: relative;
+    top: 0;
+    z-index: 2;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.gmc18-tab:checked:nth-of-type(4)~.gmc18-tab-content:nth-of-type(4) {
+    opacity: 1;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    -webkit-transition: 0.5s opacity ease-in, 0.2s -webkit-transform ease;
+    transition: 0.5s opacity ease-in, 0.2s -webkit-transform ease;
+    -o-transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease;
+    transition: 0.5s opacity ease-in, 0.2s transform ease, 0.2s -webkit-transform ease;
+    position: relative;
+    top: 0;
+    z-index: 2;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.gmc18-tab:checked:nth-of-type(1)+label {
+    border-bottom: 3px solid #020202;
+}
+
+.gmc18-tab:checked:nth-of-type(2)+label {
+    border-bottom: 3px solid #020202;
+}
+
+.gmc18-tab:checked:nth-of-type(3)+label {
+    border-bottom: 3px solid #020202;
+}
+
+.gmc18-tab:checked:nth-of-type(4)+label {
+    border-bottom: 3px solid #020202;
+}
+
+.gmc18-tab:checked+label>img {
+    opacity: 1;
+    cursor: default;
+    -webkit-filter: none;
+    filter: none;
+}
+
+.gmc18-tab+label {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: 3px solid transparent;
+    -o-transition: all 0.75s ease;
+    -moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.gmc18-tab+label>img {
+    max-width: 100px;
+    opacity: 0.5;
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.gmc18-tab+label:hover>img {
+    opacity: 1;
+    -webkit-filter: none;
+    filter: none;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.gmc18-tab-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    opacity: 0;
+    left: 0;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.gmc18-products-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    padding: 30px 0px 0px 0px;
+}
+
+.gmc18-products-container a {
+    text-decoration: none;
+}
+
+.gmc18-product-image {
+    position: relative;
+    width: 49%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 20px;
+}
+
+.gmc18-product-image-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    max-width: 70%;
+    font-size: 16px;
+    color: white;
+    text-align: left;
+    line-height: 1.4;
+    padding: 30px;
+    z-index: 2;
+}
+
+.gmc18-product-image-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.4;
+    background: black;
+    z-index: 1;
+}
+
+.gmc18-product-image-text span {
+    display: block;
+}
+
+.gmc18-product-image-text p {
+    display: inline-block;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    background: white;
+    color: #020202;
+    padding: 15px 30px 15px 30px;
+    margin-top: 20px !important;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.gmc18-product-image:hover .gmc18-product-image-text p {
+    background: #282828;
+    color: white;
+}
+
+.gmc18-product-items {
+    width: 49%;
+}
+
+.gmc18-cards-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    text-align: left;
+}
+
+.gmc18-product-wrapper {
+    width: 48%;
+    margin-bottom: 20px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.gmc18-product-card {
+    background: white;
+    -webkit-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gmc18-product-card-title {
+    display: inline-block;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #020202;
+    font-weight: 500;
+    max-height: 58px;
+    min-height: 58px;
+    overflow: hidden;
+    padding: 20px 20px 0px 20px;
+}
+
+.gmc18-product-card-text {
+    display: inline-block;
+    overflow: hidden;
+    max-height: 58px;
+    min-height: 58px;
+    font-size: 14px;
+    font-family: "Roboto", "Helvetica", Helvetica, Arial, sans-serif;
+    color: #999999;
+    line-height: 1.4;
+    padding: 20px 20px 0px 20px;
+}
+
+.gmc18-product-card-cta {
+    text-align: right;
+    padding: 20px 0px 0px 20px;
+}
+
+.gmc18-product-card-wrapper {
+    position: relative;
+    max-height: 47px;
+    overflow: hidden;
+}
+
+.gmc18-product-cta-title {
+    display: inline-block;
+    max-width: 130px;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #020202;
+    font-weight: bold;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.gmc18-product-cta-arrow {
+    display: inline-block;
+    background: #282828;
+    color: white;
+    padding: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+    -webkit-transition: background 0.5s;
+    -o-transition: background 0.5s;
+    transition: background 0.5s;
+}
+
+.gmc18-chevron-right::before {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px 2px 0 0;
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    left: -3px;
+    position: relative;
+    top: 0px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    vertical-align: top;
+    margin-left: 5px;
+    color: white;
+}
+
+.gmc18-product-cta-hover {
+    position: absolute;
+    width: 100%;
+    right: 65px;
+    bottom: 0px;
+    -o-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.gmc18-product-wrapper:hover .gmc18-product-cta-title {
+    -o-transform: translateY(-100px);
+    -ms-transform: translateY(-100px);
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+}
+
+.gmc18-product-wrapper:hover .gmc18-product-cta-hover {
+    max-width: 160px;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #020202;
+    font-weight: bold;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+}
+
+.gmc18-product-wrapper:hover .gmc18-product-cta-arrow {
+    background: #020202;
+}
+
+.gmc18-product-wrapper:hover {
+    -webkit-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* BANNER */
+.gmc18-fullwidth-banner {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 30px 0px 30px 0px;
+}
+
+.gmc18-fullwidth-banner a {
+    text-decoration: none;
+}
+
+.gmc18-fullwidth-banner-container {
+    position: relative;
+    max-width: 60%;
+    padding: 60px 60px 60px 60px;
+    z-index: 2;
+}
+
+.gmc18-fullwidth-banner-title {
+    font-size: 36px;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    padding: 0px 0px 20px 0px;
+}
+
+.gmc18-fullwidth-banner-text {
+    font-size: 20px;
+    color: white;
+    line-height: 1.4;
+}
+
+.gmc18-fullwidth-banner-cta {
+    display: inline-block;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    background: white;
+    color: #020202;
+    padding: 15px 40px 15px 40px;
+    margin-top: 30px !important;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.gmc18-fullwidth-banner:hover .gmc18-fullwidth-banner-cta {
+    background: #282828;
+    color: white;
+}
+
+.gmc18-fullwidth-banner-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background: black;
+    z-index: 1;
+}
+
+.gmc18-fullwidth-banner-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: white;
+    padding: 20px;
+    z-index: 2;
+}
+
+.gmc18-fullwidth-banner-logo img {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    max-height: 80px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.gmc18-fullwidth-banner:hover .gmc18-fullwidth-banner-logo img {
+    -webkit-filter: none;
+    filter: none;
+}
+
+/* INFORMATION */
+.gmc18-info {
+    width: 100%;
+    background: white;
+    -webkit-box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    margin: 30px 0px 30px 0px;
+}
+
+.gmc18-info-container {
+    display: inline-block;
+    padding: 30px 30px 30px 30px;
+}
+
+.gmc18-info-column-1 {
+    float: left;
+    width: 30%;
+}
+
+.gmc18-info-column-2 {
+    float: left;
+    width: 70%;
+}
+
+.gmc18-info-block {
+    color: #020202;
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#dadbdb+0,dadbdb+30,dadbdb+30,ffffff+30 */
+    background: #dadbdb;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #dadbdb 0%, #dadbdb 40%, #dadbdb 40%, #ffffff 40%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #dadbdb 0%, #dadbdb 40%, #dadbdb 40%, #ffffff 40%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-gradient(linear, left top, right top, from(#dadbdb), color-stop(40%, #dadbdb), color-stop(40%, #dadbdb), color-stop(40%, #ffffff));
+    background: -o-linear-gradient(left, #dadbdb 0%, #dadbdb 40%, #dadbdb 40%, #ffffff 40%);
+    background: linear-gradient(to right, #dadbdb 0%, #dadbdb 40%, #dadbdb 40%, #ffffff 40%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#dadbdb', endColorstr='#ffffff', GradientType=1);
+    /* IE6-9 */
+    padding: 15px;
+}
+
+.gmc18-info-block p {
+    max-width: 95%;
+    word-wrap: break-word;
+}
+
+.gmc18-info-text-container {
+    width: 100%;
+}
+
+.gmc18-info-text {
+    width: 100%;
+    column-fill: balance;
+    -moz-column-fill: balance;
+    -webkit-column-fill: balance;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+}
+
+.gmc18-info-title {
+    font-family: "Montserrat", "Helvetica", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+
+.gmc18-info-p {
+    padding-bottom: 20px;
+    color: #999999;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* DESKTOP */
+@media all and (min-width: 980px) and (max-width: 1199px) {
+    .gmc18-logos-container a {
+        width: 15.8%;
+    }
+
+    .gmc18-logo-title {
+        font-size: 15px;
+    }
+
+    .gmc18-logo img {
+        max-height: 44px;
+    }
+
+    .gmc18-logo span {
+        font-size: 11px;
+    }
+
+    .gmc18-product-image {
+        position: relative;
+        width: 38%;
+    }
+
+    .gmc18-product-items {
+        width: 60%;
+    }
+}
+
+/* TABLET */
+@media all and (min-width: 768px) and (max-width: 979px) {
+    .gmc18-logos-container a {
+        width: 31%;
+    }
+
+    .gmc18-tab+label>img {
+        max-width: 80px;
+    }
+
+    .gmc18-make-first {
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1;
+    }
+
+    .gmc18-make-last {
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
+    }
+
+    .gmc18-products-container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .gmc18-product-image {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .gmc18-product-image-text {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .gmc18-product-items {
+        width: 100%;
+    }
+
+    .gmc18-product-wrapper {
+        width: 48%;
+        margin-bottom: 20px;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .gmc18-product-wrapper:hover .gmc18-product-cta-title {
+        -o-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+
+    .gmc18-product-cta-hover {
+        display: none;
+    }
+
+    .gmc18-make-four {
+        width: 48% !important;
+    }
+
+    .gmc18-fullwidth-banner-overlay {
+        opacity: 0.2;
+    }
+
+    .gmc18-fullwidth-banner {
+        background-position: 60%;
+    }
+
+    .gmc18-fullwidth-banner-container {
+        max-width: 50%;
+        padding: 60px 40px 60px 40px;
+    }
+
+    .gmc18-fullwidth-banner-title {
+        font-size: 24px;
+    }
+
+    .gmc18-fullwidth-banner-text {
+        font-size: 18px;
+    }
+
+    .gmc18-fullwidth-banner-logo {
+        padding: 10px;
+    }
+
+    .gmc18-fullwidth-banner-logo img {
+        max-height: 60px;
+    }
+
+    .gmc18-info-block {
+        font-size: 26px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+/* PHONE */
+@media all and (min-width: 480px) and (max-width: 767px) {
+    .gmc18-header-text {
+        padding: 10% 30px 15% 30px;
+    }
+
+    .gmc18-header-text h1 {
+        font-size: 20px;
+    }
+
+    .gmc18-header-text h2 {
+        font-size: 32px;
+    }
+
+    .gmc18-header-text h3 {
+        font-size: 32px;
+    }
+
+    .gmc18-logos-container a {
+        width: 31%;
+    }
+
+    .gmc18-logo-title {
+        font-size: 13px;
+    }
+
+    .gmc18-logo-cta {
+        display: none;
+    }
+
+    .gmc18-section-title {
+        font-size: 24px;
+    }
+
+    .gmc18-tab+label {
+        display: inline-block;
+        width: 15%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .gmc18-tab+label>img {
+        max-width: 100%;
+    }
+
+    .gmc18-make-first {
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1;
+    }
+
+    .gmc18-make-last {
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
+    }
+
+    .gmc18-products-container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .gmc18-product-image {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .gmc18-product-image-text {
+        max-width: 100%;
+        font-size: 14px;
+        padding: 20px;
+    }
+
+    .gmc18-product-image-text p {
+        font-size: 12px;
+        padding: 10px 15px 10px 16px;
+    }
+
+    .gmc18-product-items {
+        width: 100%;
+    }
+
+    .gmc18-product-wrapper {
+        width: 48%;
+        margin-bottom: 20px;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .gmc18-product-card-title {
+        display: inline-block;
+        font-size: 14px;
+        max-height: 55px;
+        min-height: 55px;
+    }
+
+    .gmc18-product-cta-title {
+        font-size: 12px;
+        max-width: 110px;
+    }
+
+    .gmc18-product-wrapper:hover .gmc18-product-cta-title {
+        -o-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+
+    .gmc18-product-cta-hover {
+        display: none;
+    }
+
+    .gmc18-make-four {
+        width: 48% !important;
+    }
+
+    .gmc18-section-desc {
+        font-size: 14px;
+    }
+
+    .gmc18-fullwidth-banner-overlay {
+        opacity: 0.2;
+    }
+
+    .gmc18-fullwidth-banner {
+        background-position: 60%;
+    }
+
+    .gmc18-fullwidth-banner-container {
+        max-width: 80%;
+        padding: 60px 40px 60px 40px;
+    }
+
+    .gmc18-fullwidth-banner-title {
+        font-size: 24px;
+    }
+
+    .gmc18-fullwidth-banner-text {
+        font-size: 18px;
+    }
+
+    .gmc18-fullwidth-banner-logo {
+        padding: 10px;
+    }
+
+    .gmc18-fullwidth-banner-logo img {
+        max-height: 60px;
+    }
+
+    .gmc18-info-column-1 {
+        width: 100%;
+    }
+
+    .gmc18-info-column-2 {
+        width: 100%;
+    }
+
+    .gmc18-info-container {
+        padding: 20px;
+    }
+
+    .gmc18-info-block {
+        font-size: 24px;
+        background: #E9EAEB;
+        padding: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .gmc18-info-block p {
+        max-width: 100%;
+    }
+
+    .gmc18-info-text-container {
+        width: 100%;
+    }
+
+    .gmc18-info-text {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        -webkit-column-gap: 0px;
+        -moz-column-gap: 0px;
+        column-gap: 0px;
+    }
+
+    .gmc18-info-title {
+        font-size: 20px;
+    }
+
+    .gmc18-add-top-padding {
+        padding-top: 0px;
+    }
+}
+
+@media all and (max-width: 479px) {
+    .gmc18-header-text {
+        padding: 10% 30px 15% 30px;
+    }
+
+    .gmc18-header-text h1 {
+        font-size: 20px;
+    }
+
+    .gmc18-header-text h2 {
+        font-size: 32px;
+    }
+
+    .gmc18-header-text h3 {
+        font-size: 32px;
+    }
+
+    .gmc18-logos-container a {
+        width: 47%;
+    }
+
+    .gmc18-logo-title {
+        font-size: 12px;
+    }
+
+    .gmc18-logo-cta {
+        display: none;
+    }
+
+    .gmc18-section-title {
+        font-size: 24px;
+    }
+
+    .gmc18-tab+label {
+        display: inline-block;
+        width: 15%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .gmc18-tab+label>img {
+        max-width: 100%;
+    }
+
+    .gmc18-make-first {
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1;
+    }
+
+    .gmc18-make-last {
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
+    }
+
+    .gmc18-products-container {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    .gmc18-product-image {
+        width: 100%;
+        min-height: 300px;
+    }
+
+    .gmc18-product-image-text {
+        max-width: 100%;
+        font-size: 14px;
+        padding: 20px;
+    }
+
+    .gmc18-product-image-text p {
+        font-size: 12px;
+        padding: 10px 15px 10px 16px;
+    }
+
+    .gmc18-product-items {
+        width: 100%;
+    }
+
+    .gmc18-product-wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+        -webkit-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+    .gmc18-product-card-title {
+        font-size: 14px;
+        max-height: 55px;
+        min-height: 55px;
+    }
+
+    .gmc18-product-cta-title {
+        font-size: 12px;
+    }
+
+    .gmc18-product-wrapper:hover .gmc18-product-cta-title {
+        -o-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+
+    .gmc18-product-cta-hover {
+        display: none;
+    }
+
+    .gmc18-make-four {
+        width: 100% !important;
+    }
+
+    .gmc18-section-desc {
+        font-size: 14px;
+    }
+
+    .gmc18-fullwidth-banner-overlay {
+        opacity: 0.2;
+    }
+
+    .gmc18-fullwidth-banner {
+        background-position: 60%;
+    }
+
+    .gmc18-fullwidth-banner-container {
+        max-width: 90%;
+        padding: 80px 40px 60px 40px;
+    }
+
+    .gmc18-fullwidth-banner-title {
+        font-size: 24px;
+    }
+
+    .gmc18-fullwidth-banner-text {
+        font-size: 18px;
+    }
+
+    .gmc18-fullwidth-banner-logo {
+        padding: 10px;
+    }
+
+    .gmc18-fullwidth-banner-logo img {
+        max-height: 40px;
+    }
+
+    .gmc18-info-column-1 {
+        width: 100%;
+    }
+
+    .gmc18-info-column-2 {
+        width: 100%;
+    }
+
+    .gmc18-info-container {
+        padding: 10px;
+    }
+
+    .gmc18-info-block {
+        font-size: 24px;
+        background: #E9EAEB;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .gmc18-info-block p {
+        max-width: 100%;
+    }
+
+    .gmc18-info-text-container {
+        width: 100%;
+    }
+
+    .gmc18-info-text {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        -webkit-column-gap: 0px;
+        -moz-column-gap: 0px;
+        column-gap: 0px;
+    }
+
+    .gmc18-info-title {
+        font-size: 20px;
+    }
+
+    .gmc18-add-top-padding {
+        padding-top: 0px;
+    }
+}

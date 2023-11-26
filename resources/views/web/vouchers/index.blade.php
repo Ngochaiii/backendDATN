@@ -26,7 +26,7 @@
                         </ul>
                     </div>
                     <div>
-                        <a href="{{route('admin.vouchers.create')}}" class="btn btn-primary"><i
+                        <a href="{{ route('admin.vouchers.create') }}" class="btn btn-primary"><i
                                 class="bx bx-plus me-1"></i> Add New</a>
                     </div>
                     <div class="dropdown">
@@ -61,19 +61,28 @@
                                     <tr>
 
                                         <td>{{ $voucher->code }}</td>
-                                        <td><span class="badge badge-soft-success mb-0">{{ $voucher->value }}</span></td>
+                                        @if ($voucher->type == 'fixed')
+                                            <td><span
+                                                    class="badge badge-soft-success mb-0">{{ number_format($voucher->value, 0, '', ',') }} vnđ</span>
+                                            </td>
+                                        @elseif($voucher->type == 'percentage')
+                                            <td><span class="badge badge-soft-success mb-0">{{ $voucher->value }}%</span>
+                                            </td>
+                                        @endif
                                         <td>{{ $voucher->expiration_date }}</td>
-                                        <td>{{ $voucher->uses }}</td>
+                                        <td>{{ $voucher->max_uses }}</td>
                                         <td>
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item">
-                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Edit" class="px-2 text-primary"><i
+                                                    <a href="{{ route('admin.vouchers.edit', $voucher->id) }}"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                                        class="px-2 text-primary"><i
                                                             class="bx bx-pencil font-size-18"></i></a>
                                                 </li>
                                                 <li class="list-inline-item">
-                                                    <a href="javascript:void(0);" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Delete" class="px-2 text-danger"><i
+                                                    <a href="{{ route('admin.vouchers.delete', $voucher->id) }}"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"
+                                                        class="px-2 text-danger"><i
                                                             class="bx bx-trash-alt font-size-18"></i></a>
                                                 </li>
                                                 <li class="list-inline-item dropdown">

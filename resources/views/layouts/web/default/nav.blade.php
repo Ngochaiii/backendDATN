@@ -44,7 +44,11 @@
                         <span class="hide-menu">Quản lý thương hiệu </span>
                     </a>
                 </li>
-                {{-- <li class="sidebar-item">
+                <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Vouchers </span>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
                         <span>
                             <i class="ti ti-cards"></i>
@@ -54,13 +58,13 @@
                 </li>
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+                    <a class="sidebar-link" href="{{route('admin.vouchers')}}" aria-expanded="false">
                         <span>
                             <i class="ti ti-typography"></i>
                         </span>
-                        <span class="hide-menu">Typography</span>
+                        <span class="hide-menu">Quản lý voucher</span>
                     </a>
-                </li> --}}
+                </li>
                 <li class="nav-small-cap">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Danh mục sản phẩm </span>

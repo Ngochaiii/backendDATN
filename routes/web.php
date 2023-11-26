@@ -22,6 +22,7 @@ use App\Http\Controllers\Web\EventController as WebEventController;
 use App\Http\Controllers\Web\InforController;
 use App\Http\Controllers\Web\OrderTrackingController;
 use App\Http\Controllers\Web\TicketController;
+use App\Http\Controllers\Web\VoucherController as WebVoucherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\WebController;
 use App\Http\Controllers\WishlistsController;
@@ -110,7 +111,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::group(['prefix' => 'vouchers'], function () {
                 route::get('/', [VoucherController::class, 'index'])->name('admin.vouchers');
                 route::get('/create', [VoucherController::class, 'create'])->name('admin.vouchers.create');
-
+                route::post('/store', [VoucherController::class, 'store'])->name('admin.vouchers.store');
+                route::get('/edit/{id}', [VoucherController::class, 'edit'])->name('admin.vouchers.edit');
+                Route::post('/{id}/edit', [VoucherController::class, 'update'])->name('admin.vouchers.update');
+                Route::get('/{id}/delete', [VoucherController::class, 'destroy'])->name('admin.vouchers.delete');
             });
         });
     });
@@ -163,6 +167,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             });
             Route::group(['prefix' => 'events'], function () {
                 Route::get('/', [WebEventController::class, 'index'])->name('event');
+            });
+            Route::group(['prefix' => 'client-voucher'], function () {
+                Route::get('/', [WebVoucherController::class, 'index'])->name('voucher');
             });
         });
     });

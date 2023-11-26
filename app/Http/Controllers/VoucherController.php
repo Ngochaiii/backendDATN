@@ -15,7 +15,7 @@ class VoucherController extends Controller
             'vouchers' => $vouchers,
 
         ];
-        return view('web.vouchers.index',$compact);
+        return view('web.vouchers.index', $compact);
     }
 
     public function create()
@@ -28,28 +28,44 @@ class VoucherController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         // Validate dữ liệu đầu vào
         $request->validate([
             'code' => 'required|unique:vouchers',
-            'type' => 'required',
+            'type' => 'required|in:percentage,fixed', // Loại chỉ có thể là 'percentage' hoặc 'fixed'
             'value' => 'required|numeric',
             'expiration_date' => 'required|date',
         ]);
+        $active = false;
+        if ($request->input('active') == "on") {
 
+            $active = true;
+        }
         // Tạo mới voucher
-        Voucher::create($request->all());
+        $voucher = new Voucher([
+            'code' => $request->input('code'),
+            'type' => $request->input('type'),
+            'value' => $request->input('value'),
+            'expiration_date' => $request->input('expiration_date'),
+            'min_order_value' => $request->input('min_order_value'),
+            'max_uses' => $request->input('max_uses'),
+            'active' => $active,
+        ]);
 
-        return redirect()->route('vouchers.index')->with('success', 'Voucher đã được thêm mới thành công.');
+        $voucher->save();
+
+        return redirect()->route('admin.vouchers')->with('success', 'Voucher đã được thêm mới thành công.');
     }
 
     public function edit($id)
     {
         $voucher = Voucher::findOrFail($id);
-        return view('vouchers.edit', compact('voucher'));
+        return view('web.vouchers.edit', compact('voucher'));
     }
 
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         // Validate dữ liệu đầu vào
         $request->validate([
             'code' => 'required|unique:vouchers,code,' . $id,
@@ -57,12 +73,24 @@ class VoucherController extends Controller
             'value' => 'required|numeric',
             'expiration_date' => 'required|date',
         ]);
+        $active = false;
+        if ($request->input('active') == "on") {
 
+            $active = true;
+        }
         // Cập nhật thông tin voucher
         $voucher = Voucher::findOrFail($id);
-        $voucher->update($request->all());
+        $voucher->update([
+            'code' => $request->input('code'),
+            'type' => $request->input('type'),
+            'value' => $request->input('value'),
+            'expiration_date' => $request->input('expiration_date'),
+            'min_order_value' => $request->input('min_order_value'),
+            'max_uses' => $request->input('max_uses'),
+            'active' => $active,
+        ]);
 
-        return redirect()->route('vouchers.index')->with('success', 'Voucher đã được cập nhật thành công.');
+        return redirect()->route('admin.vouchers')->with('success', 'Voucher đã được cập nhật thành công.');
     }
 
     public function destroy($id)
@@ -71,6 +99,6 @@ class VoucherController extends Controller
         $voucher = Voucher::findOrFail($id);
         $voucher->delete();
 
-        return redirect()->route('vouchers.index')->with('success', 'Voucher đã được xóa thành công.');
+        return redirect()->route('admin.vouchers')->with('success', 'Voucher đã được xóa thành công.');
     }
 }
