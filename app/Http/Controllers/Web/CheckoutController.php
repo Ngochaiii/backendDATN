@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Checkouts;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\UserVoucher;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Cart;
@@ -16,15 +17,26 @@ class CheckoutController extends Controller
 {
     public function index()
     {
+        $id_user = auth()->id();
+        $user_vouchers = UserVoucher::where('user_id', $id_user)->get();
+        $usersWithVouchers = collect(); // Initialize with an empty collection
+
+        if ($user_vouchers->isNotEmpty()) {
+            $usersWithVouchers = User::with('vouchers')->get();
+        }
+
         $compacts = [
             'siteTitle' => "Checkout",
             'ship_method' => Orders::SHIP_METHODS,
+            'user_vouchers' => $user_vouchers,
+            'usersWithVouchers' => $usersWithVouchers,
         ];
+
         return view('web.front_end.checkout.index', $compacts);
     }
     public function store(Request $request)
     {
-
+        // dd($request->all());
         // insert order
         $price = Cart::content();
         $total = 0;

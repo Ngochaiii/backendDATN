@@ -102,6 +102,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (isset($user_vouchers))
+                                    <div class="col-lg-12 col-md-12 mt-3">
+                                        <div class="form-group">
+                                            <label>Voucher của bạn <span class="required">*</span></label>
+
+                                            <div class="select-box">
+                                                <select class="form-select"  name="voucher">
+                                                    <option disabled selected>-- Lựa chọn voucher bạn đang có--</option>
+                                                    @foreach ($user_vouchers as $user_voucher)
+                                                        <option>{{ $user_voucher->voucher->value }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
 
                                 <div class="col-lg-12 col-md-12 mt-3">
                                     <div class="form-group">

@@ -170,6 +170,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             });
             Route::group(['prefix' => 'client-voucher'], function () {
                 Route::get('/', [WebVoucherController::class, 'index'])->name('voucher');
+                Route::post('/user/redeem-voucher', [WebVoucherController::class, 'redeemVoucher'])->name('voucher.redeem');
             });
         });
     });

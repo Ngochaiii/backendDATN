@@ -94,4 +94,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class, 'user_id', 'id');
     }
+    public function vouchers()
+    {
+        return $this->hasManyThrough(Voucher::class, UserVoucher::class);
+    }
 }
