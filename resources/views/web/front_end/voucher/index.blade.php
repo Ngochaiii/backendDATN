@@ -1118,16 +1118,16 @@
                                             </div>
                                             <!-- Voucher CARD 2 ends -->
                                             <!-- Voucher CARD 3 starts								<div class="gmc18-product-wrapper gmc18-make-four">									<a data-cn-clickout="" data-cn-voucher-id="722053" href="https://gutscheine.chip.de/fruehling#voucher-722053" rel="nofollow" target="_blank">										<div class="gmc18-product-card">											<div class="gmc18-product-card-title">10% auf alles</div>
-                                                                                                  <div class="gmc18-product-card-text">Erhalten Sie 10% Rabatt auf Ihre Bestellung ab 39€!</div>
-                                                                                                  <div class="gmc18-product-card-cta">												<div class="gmc18-product-card-wrapper">													<div class="gmc18-product-cta-title">10% Rabatt</div>
-                                                                                                          <div class="gmc18-product-cta-hover">Angebot sichern</div>
-                                                                                                          <div class="gmc18-product-cta-arrow">														<div class="gmc18-chevron-right"></div>
+                                                                                                          <div class="gmc18-product-card-text">Erhalten Sie 10% Rabatt auf Ihre Bestellung ab 39€!</div>
+                                                                                                          <div class="gmc18-product-card-cta">												<div class="gmc18-product-card-wrapper">													<div class="gmc18-product-cta-title">10% Rabatt</div>
+                                                                                                                  <div class="gmc18-product-cta-hover">Angebot sichern</div>
+                                                                                                                  <div class="gmc18-product-cta-arrow">														<div class="gmc18-chevron-right"></div>
+                                                                                                                  </div>
+                                                                                                              </div>
                                                                                                           </div>
                                                                                                       </div>
-                                                                                                  </div>
-                                                                                              </div>
-                                                                                          </a>								</div>
-                                                                                   Voucher CARD 3 ends -->
+                                                                                                  </a>								</div>
+                                                                                           Voucher CARD 3 ends -->
                                             <!-- Voucher CARD 4 starts -->
                                             <div class="gmc18-product-wrapper gmc18-make-four">
                                                 <a data-cn-clickout="" data-cn-voucher-id="688479"
@@ -1181,7 +1181,15 @@
         </div>
         <script>
             // Trong file script.js của bạn hoặc giữa thẻ <script> trực tiếp trong trang HTML
+            const voucherStatus = {};
+
             function redeemVoucher(voucherId) {
+                // Kiểm tra xem voucher đã được nhận chưa
+                if (voucherStatus[voucherId] && voucherStatus[voucherId].received) {
+                    alert('Bạn đã nhận voucher này rồi.');
+                    return;
+                }
+
                 // Gửi yêu cầu đến backend để nhận và sử dụng voucher
                 fetch('http://127.0.0.1:8000/home-page/client-voucher/user/redeem-voucher', {
                         method: 'POST',
@@ -1194,17 +1202,42 @@
                         }),
                     })
                     .then(response => response.json())
+                    // .then(data => {
+                    //     console.log(data)
+                    //     // Xử lý kết quả từ backend (hiển thị thông báo hoặc cập nhật giao diện)
+                    //     var messageContainer = document.getElementById('message-container');
+                    //     if (data.error) {
+                    //         messageContainer.innerHTML = '<p>' + data.error + '</p>';
+                    //     } else {
+                    //         messageContainer.innerHTML = '<p>' + data.message + '</p>';
+                    //         // Đánh dấu voucher đã nhận trong biến đối tượng
+                    //         voucherStatus[voucherId] = {
+                    //             received: true
+                    //         };
+                    //     }
+                    //     // Thêm logic khác nếu cần
+                    // })
+                    // .catch(error => {
+                    //     // Xử lý lỗi và hiển thị thông báo lỗi
+                    //     var messageContainer = document.getElementById('message-container');
+                    //     messageContainer.innerHTML = '<p>Có lỗi xảy ra: ' + error.message + '</p>';
+                    // });
                     .then(data => {
-                        // Xử lý kết quả từ backend (hiển thị thông báo hoặc cập nhật giao diện)
-                        var messageContainer = document.getElementById('message-container');
-                        messageContainer.innerHTML = '<p>' + data.message + '</p>';
+                        // Xử lý kết quả từ backend
+                        if (data.error) {
+                            alert('Lỗi: ' + data.error);
+                        } else {
+                            alert('Thành công: ' + data.message);
+                            // Đánh dấu voucher đã nhận trong biến đối tượng
+                            voucherStatus[voucherId] = {
+                                received: true
+                            };
+                        }
                         // Thêm logic khác nếu cần
-                        alert('Bạn đã nhận voucher thành công!');
                     })
                     .catch(error => {
                         // Xử lý lỗi và hiển thị thông báo lỗi
-                        var messageContainer = document.getElementById('message-container');
-                        messageContainer.innerHTML = '<p>Có lỗi xảy ra: ' + error.message + '</p>';
+                        alert('Có lỗi xảy ra: ' + error.message);
                     });
             }
         </script>

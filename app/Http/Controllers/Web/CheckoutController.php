@@ -36,7 +36,7 @@ class CheckoutController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->all());
+
         // insert order
         $price = Cart::content();
         $total = 0;
@@ -45,6 +45,13 @@ class CheckoutController extends Controller
             $total +=  $value->qty;
             $total_prices += $value->price * $value->qty;
         }
+        if ($request->selected_voucher_type !== null && $request->selected_voucher_type == 'percentage') {
+            $total_prices = $total_prices - ($total_prices * $request->selected_voucher_value / 100);
+        }
+        if ($request->selected_voucher_type !== null && $request->selected_voucher_type == 'fixed') {
+            $total_prices = $total_prices - $request->selected_voucher_value;
+        }
+        // dd($request->all(), $total, $total_prices);
         $order = new Orders;
         $order->user_id = Auth::user()->id;
         $order->name = $request->name;
@@ -65,7 +72,7 @@ class CheckoutController extends Controller
             $fileName = uniqid() . '_' . $file->getClientOriginalName();
             $file->move('file/bill_image', $fileName);
             $order->bill_image =  $fileName;
-        }else{
+        } else {
             $order->pay_method = $request->pay_method;
         }
         $order->save();

@@ -32,7 +32,15 @@ class VoucherController extends Controller
         // Lấy danh sách các voucher dựa trên danh sách ID
         $vouchers = Voucher::whereIn('id', $voucherIds)->get();
 
+        // Lấy danh sách user voucher đã nhận từ người dùng
+        $userVouchers = UserVoucher::where('user_id', auth()->id())->pluck('voucher_id')->toArray();
+
         foreach ($vouchers as $voucher) {
+            // Kiểm tra xem người dùng đã nhận voucher loại này chưa
+            if (in_array($voucher->id, $userVouchers)) {
+                return response()->json(['error' => 'Bạn đã nhận loại voucher này rồi'], 422);
+            }
+
             // Kiểm tra số lần sử dụng còn lại của voucher
             if ($voucher->uses < $voucher->max_uses) {
                 // Sử dụng Eloquent Relationships để lưu dữ liệu
@@ -46,6 +54,9 @@ class VoucherController extends Controller
 
                 // Tăng số lần sử dụng của voucher
                 $voucher->increment('uses');
+
+                // Cập nhật user_voucher_id trong bảng vouchers
+                $voucher->update(['user_voucher_id' => $userVoucher->id]);
             } else {
                 // Nếu hết lượt sử dụng, trả về thông báo lỗi
                 return response()->json(['error' => 'Hết lượt sử dụng cho một số voucher'], 422);

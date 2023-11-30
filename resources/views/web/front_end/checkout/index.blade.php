@@ -106,12 +106,23 @@
                                     <div class="col-lg-12 col-md-12 mt-3">
                                         <div class="form-group">
                                             <label>Voucher của bạn <span class="required">*</span></label>
-
+                                            <input type="hidden" name="selected_voucher_value" id="selected_voucher_value"
+                                                value="">
+                                            <input type="hidden" name="selected_voucher_type" id="selected_voucher_type"
+                                                value="">
                                             <div class="select-box">
-                                                <select class="form-select"  name="voucher">
+                                                <select class="form-select" name="voucher" id="voucher_select">
                                                     <option disabled selected>-- Lựa chọn voucher bạn đang có--</option>
                                                     @foreach ($user_vouchers as $user_voucher)
-                                                        <option>{{ $user_voucher->voucher->value }}</option>
+                                                        @if ($user_voucher->voucher->type == 'percentage')
+                                                            <option data-value="{{ $user_voucher->voucher->value }}"
+                                                                data-type="percentage">
+                                                                {{ $user_voucher->voucher->value }}%</option>
+                                                        @elseif($user_voucher->voucher->type == 'fixed')
+                                                            <option data-value="{{ $user_voucher->voucher->value }}"
+                                                                data-type="fixed">{{ $user_voucher->voucher->value }}vnđ
+                                                            </option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -300,11 +311,24 @@
         $(document).ready(function() {
             $('#checkbox1').change(function() {
                 if (!this.checked)
-                    //  ^
                     $('#autoUpdate').fadeIn('slow');
                 else
                     $('#autoUpdate').fadeOut('slow');
             });
+        });
+    </script>
+    <script>
+        let voucherSelect = document.querySelector('#voucher_select');
+        let selectedVoucherValueInput = document.querySelector('#selected_voucher_value');
+        let selectedVoucherTypeInput = document.querySelector('#selected_voucher_type');
+
+        voucherSelect.addEventListener("change", (e) => {
+            const selectedOption = voucherSelect.options[voucherSelect.selectedIndex];
+            const voucherValue = selectedOption.getAttribute('data-value');
+            const voucherType = selectedOption.getAttribute('data-type');
+
+            selectedVoucherValueInput.value = voucherValue;
+            selectedVoucherTypeInput.value = voucherType;
         });
     </script>
 @endpush
