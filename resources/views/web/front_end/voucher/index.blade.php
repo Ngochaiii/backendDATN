@@ -9,9 +9,9 @@
                 id="gmc18-header">
                 <div class="gmc18-header-overlay"></div>
                 <div class="gmc18-header-text">
-                    <h1>Frühlingsgefühle</h1>
-                    <h2>Die besten Angebote der Saison</h2>
-                    <h3>Frühlingsangebote 2019</h3>
+                    <h1>Mã giảm giá , Những ưu đãi tốt nhất </h1>
+                    <h2>ƯU ĐÃI TỐT NHẤT CỦA MÙA</h2>
+                    <h3>Mùa Xuân Năm 2024</h3>
                 </div>
             </div>
             <!-- header end -->
@@ -70,7 +70,7 @@
             <div class="gmc18-section" id="gmc18section1">
                 <div class="gmc18-section-container gmc18-text-center">
                     <!-- Title for the whole section -->
-                    <div class="gmc18-section-title">Schicke Frühlingsmode</div>
+                    <div class="gmc18-section-title">VOUCHER XTRA</div>
                     <!-- Tabs Navigation, add logos -->
                     <div class="gmc18-tab-wrap">
                         <!-- TAB 1, GOLD -->

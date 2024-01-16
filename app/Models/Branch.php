@@ -22,7 +22,7 @@ class Branch extends Model
         return $this->hasMany(Product::class , 'brand_id');
     }
     public function posts() {
-        return $this->hasMany(Post::class , 'brand_id');
+        return $this->hasMany(Post::class , 'post_id');
     }
 
 }

@@ -2,67 +2,78 @@
 
 @section('content')
     <div class="shop-area ptb-80">
-        <div class="container">
-            <div class="row align-items-center">
-                <article class="card" style="margin-top: 80px;">
-                    <header class="card-header"> My Orders / Tracking </header>
-                    <div class="card-body">
-                        <h6>Order ID: OD45345345435</h6>
-                        <article class="card">
-                            <div class="card-body row">
-                                <div class="col"> <strong>Estimated Delivery time:</strong> <br>29 nov 2019 </div>
-                                <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i
-                                        class="fa fa-phone"></i>
-                                    +1598675986 </div>
-                                <div class="col"> <strong>Status:</strong> <br> {{$data_order[0]->status}} </div>
-                                <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+        @foreach ($data_order as $item => $index)
+            <div class="container">
+                <div class="row align-items-center">
+                    <article class="card" style="margin-top: 80px;">
+                        <header class="card-header"> My Orders / Tracking {{ $item + 1 }} </header>
+                        <div class="card-body">
+                            <h6>Order ID: OD45345345435</h6>
+                            <article class="card">
+                                <div class="card-body row">
+                                    <div class="col"> <strong>Estimated Delivery time:</strong> <br>{{$index->created_at}} </div>
+                                    <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i
+                                            class="fa fa-phone"></i>
+                                        +1598675986 </div>
+                                    <div class="col"> <strong>Status:</strong> <br> {{ $data_order[0]->status }} </div>
+                                    <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
+                                </div>
+                            </article>
+                            <div class="track">
+                                <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
+                                        class="text">Order confirmed</span> </div>
+                                <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span
+                                        class="text">
+                                        Chờ xác nhân đơn hàng</span> </div>
+                                @if ($index->status == 'completed')
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span>
+                                        <span class="text">
+                                            Đang giao hàng </span>
+                                    </div>
+                                @else
+                                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
+                                            class="text">
+                                            Đang giao hàng </span> </div>
+                                @endif
+                                <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
+                                        class="text">Hoàn thành đơn hàng</span> </div>
                             </div>
-                        </article>
-                        <div class="track">
-                            <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
-                                    class="text">Order confirmed</span> </div>
-                            <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span
-                                    class="text">
-                                    Chờ xác nhân đơn hàng</span> </div>
-                            @if ($last_order->status == 'completed')
-                                <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
-                                        class="text">
-                                        Đang giao hàng </span> </div>
-                            @else
-                                <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
-                                        class="text">
-                                        Đang giao hàng </span> </div>
-                            @endif
-                            <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
-                                    class="text">Hoàn thành đơn hàng</span> </div>
+                            <hr>
+                            <ul class="row">
+                                @foreach ($dataChekouts as $checkoutCollection)
+                                    @foreach ($checkoutCollection as $item)
+                                        @if ($index->order_id == $item->order_id)
+                                            <li class="col-md-4">
+                                                <figure class="itemside mb-3">
+                                                    <div class="aside"><img
+                                                            src="{{ asset('assets/front_end/assets/img/shop-image/1.jpg') }}"
+                                                            class="img-sm border">
+                                                    </div>
+                                                    <figcaption class="info align-self-center">
+
+                                                        <p class="title">{{ $item->product->name }} <br>
+                                                            {{ $item->quantity }}
+                                                        </p>
+
+                                                    </figcaption>
+                                                </figure>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                Tong So Tien :
+                                <span class="text-muted">{{ number_format($index->total, 0, '', ',') }}
+                                </span>
+                            </ul>
+                            <hr>
+                            <a href="{{ route('home.product') }}" class="btn btn-warning" data-abc="true"> <i
+                                    class="fa fa-chevron-left"></i> Back to orders</a>
                         </div>
-                        <hr>
-                        <ul class="row">
-                            @foreach ($dataChekout as $item)
-                            {{-- {{dd($item->product->name);}} --}}
-                                <li class="col-md-4">
-                                    <figure class="itemside mb-3">
-                                        <div class="aside"><img src="{{asset('assets/front_end/assets/img/shop-image/1.jpg')}}"
-                                                class="img-sm border">
-                                        </div>
-                                        <figcaption class="info align-self-center">
-                                            <p class="title">{{ $item->product->name }} <br> {{ $item->quantity }}</p>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                            @endforeach
-                            Tong So Tien :
-                            <span class="text-muted">{{ number_format($item->total_price, 0, '', ',') }}
-                            </span>
-                        </ul>
-                        <hr>
-                        <a href="{{route('home.product')}}" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back
-                            to
-                            orders</a>
-                    </div>
-                </article>
+                    </article>
+                </div>
             </div>
-        </div>
+        @endforeach
+
     </div>
 @endsection
 @push('css')
